@@ -1,0 +1,24 @@
+{
+  "name": "تسجيل للعب — تجريبي 2.1",
+  "short_name": "تسجيل تجريبي",
+  "description": "بيئة اختبار مستقلة عن تسجيل للعب الرسمي",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#071421",
+  "theme_color": "#0b2033",
+  "icons": [
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
