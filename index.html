@@ -80,6 +80,15 @@ body{background:radial-gradient(ellipse at 50% 5%,#173a5e 0,#07192d 49%,#020915 
 .score-row.winner{background:linear-gradient(90deg,#4c3413,#172e3d);border:2px solid #ffc75d;animation:celebratePop .65s both}
 #challenge{border-color:#bd8d46}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+</style><style>
+/* V7: cinematic backdrop behind independent vault asset */
+.hero{background:radial-gradient(ellipse at 27% 58%,#ab6e2c33,transparent 48%),linear-gradient(145deg,#071324,#0b2035 50%,#050c19)!important;isolation:isolate}
+.hero:before{background:repeating-linear-gradient(90deg,transparent 0 110px,#e9a94d11 111px 114px),linear-gradient(180deg,#0000 55%,#090f1bda 100%)!important}
+.hero:after{content:'';position:absolute;bottom:2%;left:2%;width:45%;height:16%;background:repeating-linear-gradient(90deg,#c68b3d 0 38px,#6b3e18 38px 43px,#dfb160 43px 72px,#4b2c16 72px 80px);opacity:.26;transform:perspective(350px) rotateX(30deg);filter:blur(3px);pointer-events:none}
+.vault-art{border:0!important;filter:drop-shadow(0 18px 20px #000d) drop-shadow(0 0 55px #ffbc4c88)!important}
+.vault-option .emoji{flex-shrink:0}
+.sound-control{position:fixed;left:16px;bottom:16px;z-index:200;background:linear-gradient(#223b5a,#0a1c32);border:1px solid #dfb456;color:#ffdb91;box-shadow:0 8px 22px #0009;padding:11px 15px;font-size:16px;border-radius:30px;min-width:100px}
+@media(max-width:700px){.sound-control{left:8px;bottom:8px;padding:9px 12px;font-size:13px}}
 </style></head><body><main>
 <section id="home" class="hero"><div class="hero-copy"><span class="tag">🏆 تحدي الخزائن • الإصدار السينمائي</span><h1>🔐 افتح الخزنة</h1><p class="muted">فك الشفرة، اهزم الوقت، واجمع كنوز فريقك</p><div class="menu"><button class="gold" onclick="show('setup')">🎮 لعبة جديدة</button><button onclick="resume()">↩️ استكمال المباراة</button><button class="gray" onclick="show('rules')">📖 طريقة اللعب</button><button class="gray" onclick="show('settings')">⚙️ الإعدادات</button></div><p class="muted small">2 إلى 4 فرق · 3 خزائن لكل فريق · 3 بطاقات مساعدة</p></div><div class="vault-art" aria-hidden="true"></div></section>
 <section id="rules" class="panel hide"><h2 class="section-title">📖 طريقة اللعب</h2><p>قرعة تلقائية تحدد الفريق الأول. لكل فريق ثلاث خزائن (متوسط 3 دقائق، صعب 4:30، صعب جداً 6 دقائق). أربعة أسئلة تكسب أرقاماً غير مرتبة عند الإجابة الصحيحة فقط؛ اللغز الخامس يعطي أدلة ترتيبها. إدخال الرمز الصحيح قبل انتهاء الوقت يمنح النقاط كاملة. لا توجد سرقة أو نقاط جزئية.</p><p>كل فريق يختار 3 مساعدات مختلفة تستخدم مرة واحدة. عند تساوي النقاط يفوز الأقل في مجموع وقت الخزائن الثلاث؛ وإذا تساوى الوقت أيضاً تظهر جولة فاصلة.</p><button onclick="show('home')">العودة للرئيسية</button></section>
@@ -125,4 +134,38 @@ function showTieAnswer(){el('tieAnswer').classList.remove('hide')}
 function chooseTieWinner(i){if(!game.tie?.teams.includes(i))return;game.tieWinner=i;save();finish(true)}
 function useCard(id){let a=game?.active,t=game?.teams[game.turn];if(!a||a.paused||!t.cards.includes(id))return;let q=a.questionIndex<4?currentQuestion():null;let consume=true;if(id==='time'){a.endAt+=30000;a.initialMs+=30000;a.cardMessage='⏱️ تمت إضافة 30 ثانية.'}else if(id==='hint'){a.cardMessage=a.questionIndex===4?'💡 ابدأ بالأدلة التي تحدد موضعاً مباشراً، ثم استبعد الترتيبات المخالفة.':'💡 المجال: '+(q?.topic||'معلومات عامة')+' — فكر في الكلمات المفتاحية للسؤال.'}else if(id==='swap'){if(!q){consume=false;alert('التبديل متاح للأسئلة الأربعة فقط')}else{let pool=BANK[a.level].flatMap(x=>x.questions);let used=new Set(BANK[a.level][a.index].questions.map(x=>x.question));let candidates=pool.filter(x=>!used.has(x.question)&&x.question!==q.question);let other=candidates[Math.floor(Math.random()*candidates.length)];if(!other){consume=false}else{a.override={...other,digit:q.digit};a.revealed=false;a.cardMessage='🔁 تم تبديل السؤال، والرقم السري لهذا الموضع لم يتغير.'}}}else if(id==='digit'){let missing=a.found.map((x,i)=>x===null?i:-1).filter(i=>i>=0);if(!missing.length){consume=false;alert('كل الأرقام مكتشفة بالفعل')}else{let pos=missing[0];a.found[pos]=String(BANK[a.level][a.index].questions[pos].digit);a.cardMessage='👁️ كُشف رقم واحد غير مكتشف.'}}else if(id==='retry'){let pos=a.wrong.pop();if(pos==null){consume=false;alert('لا يوجد سؤال خاطئ سابق')}else if(a.questionIndex>=4){consume=false;a.wrong.push(pos);alert('فرصة ثانية تستخدم قبل اللغز الخامس')}else{a.questionIndex=pos;a.override=null;a.revealed=false;a.cardMessage='🛡️ رجعت إلى السؤال الخاطئ لمحاولة ثانية.'}}else if(id==='choice'){if(!q){consume=false;alert('الاختيارات للأسئلة الأربعة فقط')}else{let pool=BANK[a.level].flatMap(x=>x.questions).filter(x=>x.answer!==q.answer&&x.topic===q.topic);if(pool.length<3)pool=BANK[a.level].flatMap(x=>x.questions).filter(x=>x.answer!==q.answer);let wrong=[...new Set(pool.map(x=>x.answer))].slice(0,3);let opts=[q.answer,...wrong].sort(()=>Math.random()-.5);a.cardMessage='☑️ الخيارات: '+opts.join(' | ')}}if(!consume)return;t.cards=t.cards.filter(x=>x!==id);save();renderActive()}
 function resetAll(){stopTick();localStorage.removeItem(KEY);game=null;show('setup');drawTeamInputs()}
-drawTeamInputs();</script></body></html>
+drawTeamInputs();</script><script>
+(function(){
+'use strict';
+let ctx=null, muted=localStorage.getItem('khazna_sound_v7')==='off', lastTick=-1;
+function context(){try {if(!ctx)ctx=new (window.AudioContext||window.webkitAudioContext)();if(ctx.state==='suspended')ctx.resume().catch(()=>{});return ctx}catch(e){return null}}
+function tone(f,d=.13,kind='sine',volume=.11,delay=0,endF=0){if(muted)return;const c=context();if(!c)return;try{const t=c.currentTime+delay,o=c.createOscillator(),g=c.createGain();o.type=kind;o.frequency.setValueAtTime(f,t);if(endF)o.frequency.exponentialRampToValueAtTime(Math.max(40,endF),t+d);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(Math.max(.001,volume),t+.012);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(g);g.connect(c.destination);o.start(t);o.stop(t+d+.03)}catch(e){}}
+function fx(name){if(muted)return;switch(name){
+case 'tap':tone(470,.045,'sine',.027);break;
+case 'begin':tone(330,.1,'triangle',.09);tone(440,.13,'triangle',.09,.11);tone(660,.18,'triangle',.1,.24);break;
+case 'correct':tone(523,.13,'sine',.09);tone(659,.13,'sine',.09,.12);tone(784,.22,'sine',.12,.24);break;
+case 'wrong':tone(250,.18,'sawtooth',.042,0,165);tone(164,.16,'triangle',.05,.16);break;
+case 'tick':tone(800,.075,'square',.035);break;
+case 'urgent':tone(920,.065,'square',.05);tone(650,.07,'square',.035,.1);break;
+case 'open':tone(160,.55,'sawtooth',.075,0,70);tone(350,.28,'triangle',.08,.4,650);tone(523,.3,'sine',.12,.7);tone(659,.32,'sine',.12,.95);tone(784,.5,'sine',.14,1.2);tone(1046,.65,'sine',.11,1.55);break;
+case 'fail':tone(385,.18,'triangle',.08,0,220);tone(260,.22,'triangle',.08,.23,125);break;
+case 'winner':tone(523,.18,'triangle',.1);tone(659,.18,'triangle',.1,.17);tone(784,.18,'triangle',.1,.34);tone(1046,.4,'triangle',.14,.55);break;
+case 'number':tone(620,.08,'sine',.09);tone(930,.19,'sine',.1,.09);break;
+}}
+function btn(){let b=document.getElementById('khaznaSoundBtn');if(!b){b=document.createElement('button');b.type='button';b.className='sound-control';b.id='khaznaSoundBtn';b.addEventListener('click',()=>{muted=!muted;localStorage.setItem('khazna_sound_v7',muted?'off':'on');sync();if(!muted)fx('correct')});document.body.appendChild(b)}sync()}
+function sync(){let b=document.getElementById('khaznaSoundBtn');if(b){b.textContent=muted?'🔇 الصوت مغلق':'🔊 الصوت يعمل';b.setAttribute('aria-label',muted?'تشغيل الصوت':'كتم الصوت')}let t=document.getElementById('soundToggle');if(t)t.checked=!muted}
+document.addEventListener('pointerdown',()=>{if(!muted)context()},{passive:true});
+document.addEventListener('keydown',()=>{if(!muted)context()},{passive:true});
+document.addEventListener('DOMContentLoaded',()=>{btn();const toggle=document.getElementById('soundToggle');if(toggle)toggle.addEventListener('change',()=>{muted=!toggle.checked;localStorage.setItem('khazna_sound_v7',muted?'off':'on');sync();if(!muted)fx('correct')});});
+function wrap(name,fn){let orig=window[name];if(typeof orig==='function')window[name]=function(...args){return fn.call(this,orig,args)}}
+wrap('newGame',function(orig,args){let r=orig.apply(this,args);if(window.game||typeof game!=='undefined')fx('begin');return r});
+wrap('startVault',function(orig,args){let r=orig.apply(this,args);fx('begin');return r});
+wrap('resolveQuestion',function(orig,args){let before=(typeof game!=='undefined'&&game?.active?.questionIndex);let r=orig.apply(this,args);if(typeof before==='number')fx(args[0]?'correct':'wrong');return r});
+wrap('reveal',function(orig,args){let r=orig.apply(this,args);fx('tap');return r});
+wrap('tryCode',function(orig,args){let before=(typeof game!=='undefined'&&game?.active?.attempts)||0;let r=orig.apply(this,args);if(typeof game!=='undefined'&&game?.active&&game.active.attempts>before)fx('wrong');return r});
+wrap('endVault',function(orig,args){let r=orig.apply(this,args);fx(args[0]?'open':'fail');return r});
+wrap('finish',function(orig,args){let r=orig.apply(this,args);fx('winner');return r});
+wrap('useCard',function(orig,args){let before=typeof game!=='undefined'&&game?.teams?.[game.turn]?.cards?.length;let r=orig.apply(this,args);let after=typeof game!=='undefined'&&game?.teams?.[game.turn]?.cards?.length;if(before!=null&&after<before)fx('number');return r});
+wrap('paintClock',function(orig,args){let r=orig.apply(this,args),secs=Math.ceil(args[0]/1000);if(secs>0&&secs<=10&&secs!==lastTick){lastTick=secs;fx(secs<=3?'urgent':'tick')}if(secs>10)lastTick=-1;return r});
+})();
+</script></body></html>
