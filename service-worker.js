@@ -1,8 +1,8 @@
 /* Jaras Neon Stage 07B: embedded artwork. Asset cache only: never touches localStorage,
  * IndexedDB, Firebase, scores, questions, preferences or saved matches. */
 'use strict';
-const CACHE = 'jaras-neon-stage-07b-embedded-png-20261101';
-const ASSETS = ["chest-bronze.svg","chest-gold.svg","chest-silver.svg","feud.html","icon-180.png","icon-192.png","icon-512.png","index.html","jaras-audio.js","jaras-v53.js","manifest.webmanifest","mystery.html","neon-stage.css","neon-view.js","trivia.html","vault-door.svg","vault.html","version.json"];
+const CACHE = 'jaras-approved-embedded-20261101';
+const ASSETS = ["index.html","trivia.html","feud.html","vault.html","mystery.html","jaras-category-art.js","jaras-category-art.css","jaras-motion.js","jaras-motion.css","jaras-announcer.js","jaras-audio.js","jaras-v53.js","neon-stage.css","neon-view.js","chest-bronze.svg","chest-gold.svg","chest-silver.svg","vault-door.svg","icon-180.png","icon-192.png","icon-512.png","manifest.webmanifest","version.json"];
 const scoped = name => new URL(name, self.registration.scope).href;
 self.addEventListener('install', event => {
   event.waitUntil((async () => {
