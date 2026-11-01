@@ -1,0 +1,65 @@
+/* Jaras V5.8 neon stage visual skin; no game state or handlers changed */
+:root{--arc-cyan:#12dfff;--arc-purple:#b545ff;--arc-pink:#ff3fd0;--arc-gold:#ffcb58;color-scheme:dark}
+html{background:#07071c}body{color:#fff!important;background:radial-gradient(ellipse 70% 32% at 50% -8%,#7328b27d,transparent 90%),radial-gradient(ellipse 45% 45% at 5% 70%,#0752b05c,transparent 90%),radial-gradient(ellipse 45% 45% at 95% 65%,#8d16865c,transparent 90%),linear-gradient(160deg,#080b29,#0c0c2c 55%,#06081c)!important;min-height:100vh}
+body:before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:repeating-linear-gradient(90deg,transparent 0 125px,#b75dff09 126px,transparent 128px),radial-gradient(ellipse at 50% 100%,#d325ec25,transparent 65%)}
+body>*{position:relative}button,[role=button],.btn{touch-action:manipulation;transition:transform .15s,filter .15s,box-shadow .15s}button:not(:disabled):active{transform:scale(.97)}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #ffdc78!important;outline-offset:3px}
+button:not(:disabled):hover{filter:brightness(1.13)}h1,h2,h3{letter-spacing:.1px;text-shadow:0 0 18px #a44aff77}input,select,textarea{background:#0b1435!important;color:#fff!important;border:1px solid #5b80db!important;border-radius:12px!important}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+/* Main hub - new theatrical hierarchy and individual neon cabinets */
+body.jaras-hub header{background:linear-gradient(90deg,#0b0e31,#261044,#0b0e31)!important;border-bottom:2px solid #ae48ff!important;box-shadow:0 5px 32px #a51dff77;padding:17px 26px!important}
+body.jaras-hub header strong{font-size:clamp(22px,3vw,35px)!important;color:#fff1c6;text-shadow:0 0 13px #ffc757,0 0 25px #fa38e6}
+body.jaras-hub main{max-width:1500px!important;padding:clamp(14px,3vw,38px)!important;text-align:center}
+body.jaras-hub main>h1{font-size:clamp(38px,5vw,76px)!important;color:#fff2c4!important;margin:12px 0 8px!important;text-shadow:0 0 13px #f43cf7,0 0 35px #923fff}
+body.jaras-hub main>h1:before{content:'🔔';display:block;font-size:clamp(68px,9vw,140px);line-height:1.05;filter:drop-shadow(0 0 22px #ffbf2e);animation:bell 3.5s ease-in-out infinite}
+@keyframes bell{0%,85%,100%{transform:rotate(0)}90%{transform:rotate(9deg)}95%{transform:rotate(-7deg)}}
+body.jaras-hub .intro{font-size:clamp(16px,2vw,23px)!important;color:#e4d9ff!important}
+body.jaras-hub .cards{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:clamp(12px,2vw,26px)!important;margin-top:32px!important}
+body.jaras-hub .card{--edge:#a748ff;--glow:#52239b;position:relative;isolation:isolate;overflow:hidden;min-height:clamp(320px,32vw,440px);padding:28px 16px!important;display:flex;flex-direction:column;align-items:center;justify-content:space-around;border:3px solid var(--edge)!important;border-radius:30px!important;background:radial-gradient(ellipse at 50% 22%,var(--glow),transparent 76%),linear-gradient(155deg,#191243,#070c2d 75%)!important;box-shadow:0 0 22px var(--edge),inset 0 0 32px #12174b,0 22px 35px #0009!important}
+body.jaras-hub .card:before{content:'';position:absolute;inset:7px;border-radius:24px;border:1px solid #ffffff35;pointer-events:none}
+body.jaras-hub .card:after{content:'';position:absolute;bottom:0;left:10%;right:10%;height:4px;background:var(--edge);box-shadow:0 0 30px 12px var(--edge);opacity:.6}
+body.jaras-hub .card:nth-child(1){--edge:#12e6df!important;--glow:#087c89!important}body.jaras-hub .card:nth-child(2){--edge:#ff9937!important;--glow:#98421c!important}body.jaras-hub .card:nth-child(3){--edge:#38aaff!important;--glow:#124a9d!important}body.jaras-hub .card:nth-child(4){--edge:#ed55ff!important;--glow:#7320a1!important}
+body.jaras-hub .card .emoji{font-size:clamp(75px,9vw,145px)!important;line-height:1.25;filter:drop-shadow(0 0 18px var(--edge)) drop-shadow(0 15px 9px #0008)}
+body.jaras-hub .card h2{font-size:clamp(22px,2.4vw,34px)!important;color:#fff!important;text-shadow:0 0 14px var(--edge)}body.jaras-hub .card p{color:#e4e7ff!important}
+body.jaras-hub .card button{background:linear-gradient(180deg,var(--edge),#1c155b)!important;border:2px solid #ffffffa8!important;border-radius:50px!important;color:white!important;box-shadow:0 0 19px var(--edge),inset 0 2px #ffffff65!important;font-size:clamp(17px,1.8vw,24px)!important;padding:14px 22px!important;width:90%}
+body.jaras-hub #playerbar{background:linear-gradient(90deg,#0b1538,#211045,#0b1538)!important;border-bottom:2px solid #ae4aff!important;box-shadow:0 0 24px #8d3aff88}body.jaras-hub #playerbar button{border:1px solid #5aaeff!important;border-radius:12px!important;box-shadow:0 0 12px #297dff55}
+body.jaras-hub .panel{background:linear-gradient(140deg,#1d164d,#0a1535)!important;border:2px solid #9f4cff!important;box-shadow:0 0 26px #8734f966}
+@media(max-width:900px){body.jaras-hub .cards{grid-template-columns:repeat(2,minmax(0,1fr))!important}body.jaras-hub .card{min-height:280px}}@media(max-width:480px){body.jaras-hub .cards{grid-template-columns:1fr!important}}
+/* Shared panels and show-stage controls */
+body.arc-game .panel,body.arc-game .card{background:linear-gradient(145deg,#171447f5,#0b1536f5)!important;border:2px solid #7546e5!important;border-radius:24px!important;box-shadow:0 0 18px #823bfa4b,inset 0 1px #ffffff29,0 15px 28px #0007!important}
+body.arc-game button:not(.claimed):not(:disabled){border-radius:13px;box-shadow:inset 0 1px #ffffff45,0 0 13px #257cff55,0 5px 13px #0006}
+body.arc-game button.gold:not(:disabled),body.arc-game .gold:not(:disabled){background:linear-gradient(180deg,#ffe28a,#ed9c23)!important;color:#25122c!important;border-color:#ffeab3!important;box-shadow:0 0 20px #ffc43b88,inset 0 2px #fff8!important}
+body.arc-game .hero,body.arc-game #home.neon-home{border:2px solid #a84aff!important;background:radial-gradient(ellipse at 50% 10%,#7123a177,transparent 60%),linear-gradient(145deg,#181343,#090e2b)!important;box-shadow:inset 0 0 70px #5b2fd444,0 0 35px #ab3aff55!important}
+body.arc-game .hero h1,body.arc-game #home h1,body.arc-game #home h2{color:#ffe3a1!important;text-shadow:0 0 17px #ffbf48,0 0 30px #a54dff!important}
+/* Trivia board: category art + points color-coded by difficulty */
+body.arc-trivia .cat{background:linear-gradient(170deg,#141047,#071b41)!important;border:2px solid #9c55ff!important;border-radius:20px!important;box-shadow:0 0 17px #8d39ff77,inset 0 0 15px #1b4db855!important;overflow:hidden}
+body.arc-trivia .cat-icon{filter:drop-shadow(0 0 13px #af75ff);font-size:clamp(36px,4.2vw,60px)!important}
+body.arc-trivia .cat h3{color:#fff!important;text-shadow:0 0 10px #944dff}
+body.arc-trivia .cat button:not(.claimed){background:linear-gradient(180deg,#1267d2,#072b82)!important;border:1px solid #45d9ff!important;box-shadow:0 0 9px #15bbff77,inset 0 1px #fff6!important;color:white!important;font-weight:900}
+body.arc-trivia .cat button:not(.claimed):nth-last-child(3),body.arc-trivia .cat button:not(.claimed):nth-last-child(4){background:linear-gradient(180deg,#9231dc,#4b138f)!important;border-color:#f26dff!important;box-shadow:0 0 10px #d43bff77!important}
+body.arc-trivia .cat button:not(.claimed):nth-last-child(-n+2){background:linear-gradient(180deg,#f5b93a,#ad6205)!important;border-color:#ffe29a!important;box-shadow:0 0 10px #ffb82d99!important}
+body.arc-trivia .cat button.claimed{background:#283052!important;opacity:.55;box-shadow:none!important}
+body.arc-trivia .teamcard,body.arc-trivia .score{border:2px solid #4baeff!important;background:linear-gradient(135deg,#0c3568,#0b1537)!important;box-shadow:0 0 19px #178cff66!important}
+body.arc-trivia #questionPanel{border:3px solid #b54aff!important;box-shadow:0 0 30px #ae48ff66!important}
+body.arc-trivia .question{font-size:clamp(21px,3vw,42px)}body.arc-trivia .choice.selected{border:2px solid #ffcd64!important;box-shadow:0 0 17px #ffb84188!important}
+/* Feud reveal board */
+body.arc-feud .top{background:linear-gradient(90deg,#0b1240,#34104c,#0b1240)!important;border:2px solid #a946ff!important;box-shadow:0 0 22px #a23cff66!important}
+body.arc-feud .top h1{color:#ffe6a5!important;text-shadow:0 0 14px #ffb92b,0 0 22px #d33cff}
+body.arc-feud .answer{background:linear-gradient(90deg,#1b1455,#121b53)!important;border:2px solid #c04cff!important;box-shadow:0 0 12px #c03dff66!important;min-height:70px}
+body.arc-feud .answer.revealed{background:linear-gradient(90deg,#7c238b,#251454)!important;border-color:#ffbc49!important;box-shadow:0 0 18px #ffac3988!important}
+body.arc-feud .hostonly{border:2px dashed #ffc65e!important;background:linear-gradient(150deg,#33204c,#13153a)!important}
+body.arc-feud #home{background:radial-gradient(ellipse at 50% 0%,#8e2dbb77,transparent 66%),linear-gradient(#201143,#090e2b)!important}
+/* Vault game */
+body.arc-vault .vault-art{filter:drop-shadow(0 0 35px #e9ac36bb) drop-shadow(0 14px 20px #000a)!important}
+body.arc-vault .team-card{border:2px solid var(--team,#49aaff)!important;box-shadow:0 0 20px color-mix(in srgb,var(--team,#49aaff) 60%,transparent)!important}
+body.arc-vault .vault-option{background:linear-gradient(120deg,#122854,#16133c)!important;border:2px solid #bd8c42!important;box-shadow:0 0 12px #e9a42b55!important}
+body.arc-vault .power.selected{border:2px solid #ffcf64!important;box-shadow:0 0 19px #ffbe4c77!important;background:linear-gradient(145deg,#584025,#191742)!important}
+body.arc-vault #question,body.arc-vault #finalArea{background:linear-gradient(130deg,#161444,#071b42)!important;border:2px solid #a54dff!important;box-shadow:0 0 21px #893cff55!important}
+body.arc-vault #clock{color:#ffdb8b!important;text-shadow:0 0 20px #ffc73d}
+/* Mystery: gift cards + stage */
+body.arc-mystery .box-btn:not(.opened){background:radial-gradient(ellipse at 50% 10%,#6c27af,#171044 80%)!important;border:2px solid #f05aff!important;box-shadow:0 0 18px #c335ff88,inset 0 0 20px #9b3dff55!important;border-radius:23px!important}
+body.arc-mystery .box-btn:not(.opened):hover{border-color:#4deaff!important;box-shadow:0 0 25px #30dfffaa!important}
+body.arc-mystery .scorebox.active{border:2px solid #4aeaff!important;box-shadow:0 0 25px #36e4ff88!important}
+body.arc-mystery #challengeScreen{border:2px solid #c04aff!important;box-shadow:0 0 25px #ab3cff77!important}
+body.arc-mystery .roundtitle{color:#ffe29b!important;text-shadow:0 0 20px #ffb43d!important}
+body.arc-mystery .instruction{background:linear-gradient(140deg,#1b1655,#0b2148)!important;border:2px solid #985cff!important}
+body.arc-mystery .hero-art{filter:drop-shadow(0 0 25px #e75aff)}

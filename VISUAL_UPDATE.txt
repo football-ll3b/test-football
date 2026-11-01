@@ -1,0 +1,1 @@
+Neon Stage V2: visual-only stylesheet applied to all five HTML pages. Original game JavaScript, question data, scoring, settings and saves retained. Deploy all files together, not just index.html. If cached, clear Safari website data or use a new deployment URL. Browser/iPad interactive QA not completed.
