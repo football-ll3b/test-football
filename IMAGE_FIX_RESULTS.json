@@ -1,0 +1,526 @@
+{
+  "build_audit": {
+    "build": "Stage07B-embedded-images",
+    "source": "Jaras_Neon_Stage07_Complete.zip",
+    "artwork_png_count": 15,
+    "dynamic_category_artwork_count": 6,
+    "changes": {
+      "trivia.html": {
+        "embedded_references": 1
+      },
+      "index.html": {
+        "embedded_references": 5
+      },
+      "vault.html": {
+        "embedded_references": 1
+      },
+      "feud.html": {
+        "embedded_references": 1
+      },
+      "neon-stage.css": {
+        "embedded_references": 8
+      },
+      "mystery.html": {
+        "embedded_references": 1
+      }
+    },
+    "inline_gameplay_scripts": {
+      "index.html": {
+        "inline_scripts": 6,
+        "sha256": "780d754dd72826eb498ea0db797bca7df39e33cb3f81d9cb4f91ae1163efb33d",
+        "identical": true
+      },
+      "trivia.html": {
+        "inline_scripts": 8,
+        "sha256": "9991736e074f68880e9f3e978a0414d6c72a43b983235452683dddd975cd6664",
+        "identical": true
+      },
+      "feud.html": {
+        "inline_scripts": 13,
+        "sha256": "c89af9db6e0024c56c429295f673b11c3206fef0336eb4d3fe51cb57389f1f7c",
+        "identical": true
+      },
+      "vault.html": {
+        "inline_scripts": 7,
+        "sha256": "d096fe59719cf51d904a87e5cf59c28a9fb516253baf9e41bd323c66a0e76e85",
+        "identical": true
+      },
+      "mystery.html": {
+        "inline_scripts": 6,
+        "sha256": "23c98da69934cea0d01e0e296f0e95b400717371c5a626950ce2aaded51f021d",
+        "identical": true
+      }
+    },
+    "external_neon_assets_dependencies": 0,
+    "runtime_cache_entries": 18,
+    "tests_scope": "Image embedding, asset loading, layout equivalence and game entry points only. Not a complete gameplay regression."
+  },
+  "render_checks": {
+    "tests": [
+      {
+        "test": "Original ZIP artwork decodes",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "test": "Unavailable artwork references reproduce five missing images",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "test": "1180x680 five hub pictures loaded as PNG",
+        "passed": true,
+        "detail": [
+          {
+            "ok": true,
+            "embedded": true,
+            "width": 708
+          },
+          {
+            "ok": true,
+            "embedded": true,
+            "width": 227
+          },
+          {
+            "ok": true,
+            "embedded": true,
+            "width": 238
+          },
+          {
+            "ok": true,
+            "embedded": true,
+            "width": 249
+          },
+          {
+            "ok": true,
+            "embedded": true,
+            "width": 268
+          }
+        ]
+      },
+      {
+        "test": "1180x680 no horizontal overflow",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "test": "1180x680 all four play buttons in viewport",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "test": "Card geometry matches Stage07",
+        "passed": true,
+        "detail": {
+          "original": [
+            [
+              879.109375,
+              225.390625,
+              253.703125,
+              395.609375
+            ],
+            [
+              601.796875,
+              225.390625,
+              253.71875,
+              395.609375
+            ],
+            [
+              324.5,
+              225.390625,
+              253.703125,
+              395.609375
+            ],
+            [
+              47.1875,
+              225.390625,
+              253.71875,
+              395.609375
+            ]
+          ],
+          "fixed": [
+            [
+              879.109375,
+              225.390625,
+              253.703125,
+              395.609375
+            ],
+            [
+              601.796875,
+              225.390625,
+              253.71875,
+              395.609375
+            ],
+            [
+              324.5,
+              225.390625,
+              253.703125,
+              395.609375
+            ],
+            [
+              47.1875,
+              225.390625,
+              253.71875,
+              395.609375
+            ]
+          ]
+        }
+      },
+      {
+        "test": "General settings opens",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "test": "General settings closes",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "test": "Audio panel opens",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "test": "Audio panel closes",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "test": "1180x680 no page JavaScript errors",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "test": "1180x820 five hub pictures loaded as PNG",
+        "passed": true,
+        "detail": [
+          {
+            "ok": true,
+            "embedded": true,
+            "width": 708
+          },
+          {
+            "ok": true,
+            "embedded": true,
+            "width": 227
+          },
+          {
+            "ok": true,
+            "embedded": true,
+            "width": 238
+          },
+          {
+            "ok": true,
+            "embedded": true,
+            "width": 249
+          },
+          {
+            "ok": true,
+            "embedded": true,
+            "width": 268
+          }
+        ]
+      },
+      {
+        "test": "1180x820 no horizontal overflow",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "test": "1180x820 all four play buttons in viewport",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "test": "1180x820 no page JavaScript errors",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "test": "1024x650 five hub pictures loaded as PNG",
+        "passed": true,
+        "detail": [
+          {
+            "ok": true,
+            "embedded": true,
+            "width": 708
+          },
+          {
+            "ok": true,
+            "embedded": true,
+            "width": 227
+          },
+          {
+            "ok": true,
+            "embedded": true,
+            "width": 238
+          },
+          {
+            "ok": true,
+            "embedded": true,
+            "width": 249
+          },
+          {
+            "ok": true,
+            "embedded": true,
+            "width": 268
+          }
+        ]
+      },
+      {
+        "test": "1024x650 no horizontal overflow",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "test": "1024x650 all four play buttons in viewport",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "test": "1024x650 no page JavaScript errors",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "test": "1366x1024 five hub pictures loaded as PNG",
+        "passed": true,
+        "detail": [
+          {
+            "ok": true,
+            "embedded": true,
+            "width": 708
+          },
+          {
+            "ok": true,
+            "embedded": true,
+            "width": 227
+          },
+          {
+            "ok": true,
+            "embedded": true,
+            "width": 238
+          },
+          {
+            "ok": true,
+            "embedded": true,
+            "width": 249
+          },
+          {
+            "ok": true,
+            "embedded": true,
+            "width": 268
+          }
+        ]
+      },
+      {
+        "test": "1366x1024 no horizontal overflow",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "test": "1366x1024 all four play buttons in viewport",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "test": "1366x1024 no page JavaScript errors",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "test": "844x390 five hub pictures loaded as PNG",
+        "passed": true,
+        "detail": [
+          {
+            "ok": true,
+            "embedded": true,
+            "width": 708
+          },
+          {
+            "ok": true,
+            "embedded": true,
+            "width": 227
+          },
+          {
+            "ok": true,
+            "embedded": true,
+            "width": 238
+          },
+          {
+            "ok": true,
+            "embedded": true,
+            "width": 249
+          },
+          {
+            "ok": true,
+            "embedded": true,
+            "width": 268
+          }
+        ]
+      },
+      {
+        "test": "844x390 no horizontal overflow",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "test": "844x390 all four play buttons in viewport",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "test": "844x390 no page JavaScript errors",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "test": "390x844 five hub pictures loaded as PNG",
+        "passed": true,
+        "detail": [
+          {
+            "ok": true,
+            "embedded": true,
+            "width": 708
+          },
+          {
+            "ok": true,
+            "embedded": true,
+            "width": 227
+          },
+          {
+            "ok": true,
+            "embedded": true,
+            "width": 238
+          },
+          {
+            "ok": true,
+            "embedded": true,
+            "width": 249
+          },
+          {
+            "ok": true,
+            "embedded": true,
+            "width": 268
+          }
+        ]
+      },
+      {
+        "test": "390x844 no horizontal overflow",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "test": "390x844 no page JavaScript errors",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "test": "trivia menu artwork loads",
+        "passed": true,
+        "detail": [
+          {
+            "ok": true,
+            "embedded": true,
+            "width": 227
+          }
+        ]
+      },
+      {
+        "test": "All six category pictures load through original trivia setup",
+        "passed": true,
+        "detail": [
+          {
+            "ok": true,
+            "embedded": true
+          },
+          {
+            "ok": true,
+            "embedded": true
+          },
+          {
+            "ok": true,
+            "embedded": true
+          },
+          {
+            "ok": true,
+            "embedded": true
+          },
+          {
+            "ok": true,
+            "embedded": true
+          },
+          {
+            "ok": true,
+            "embedded": true
+          }
+        ]
+      },
+      {
+        "test": "trivia no page JavaScript errors",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "test": "feud menu artwork loads",
+        "passed": true,
+        "detail": [
+          {
+            "ok": true,
+            "embedded": true,
+            "width": 238
+          }
+        ]
+      },
+      {
+        "test": "feud no page JavaScript errors",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "test": "vault menu artwork loads",
+        "passed": true,
+        "detail": [
+          {
+            "ok": true,
+            "embedded": true,
+            "width": 249
+          }
+        ]
+      },
+      {
+        "test": "vault no page JavaScript errors",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "test": "mystery menu artwork loads",
+        "passed": true,
+        "detail": [
+          {
+            "ok": true,
+            "embedded": true,
+            "width": 268
+          }
+        ]
+      },
+      {
+        "test": "mystery no page JavaScript errors",
+        "passed": true,
+        "detail": []
+      }
+    ],
+    "passed": 39,
+    "failed": 0,
+    "engine": "System Chromium via Playwright set_content",
+    "method": "Rendered real package HTML/CSS/view scripts with test-only asset/script inlining and an in-memory storage fixture because browser administrator policy blocks navigation. Test-only fixtures are NOT included in the package.",
+    "physical_iPad_tested": false,
+    "webkit_tested": false,
+    "hosted_navigation_tested": false,
+    "service_worker_live_install_tested": false,
+    "scope": "Art decoding/loading, geometry, settings dialogs and category art. No hosted navigation, cloud/Firebase or complete gameplay regression."
+  },
+  "all_unique_embedded_png_payloads_valid": true,
+  "png_payload_count": 464
+}

@@ -1,8 +1,8 @@
-/* Jaras Neon Stage 07. Asset cache only: never touches localStorage,
+/* Jaras Neon Stage 07B: embedded artwork. Asset cache only: never touches localStorage,
  * IndexedDB, Firebase, scores, questions, preferences or saved matches. */
 'use strict';
-const CACHE = 'jaras-neon-stage-07-20261101';
-const ASSETS = ["chest-bronze.svg","chest-gold.svg","chest-silver.svg","feud.html","icon-180.png","icon-192.png","icon-512.png","index.html","jaras-audio.js","jaras-v53.js","manifest.webmanifest","mystery.html","neon-assets/bell.webp","neon-assets/category-capitals.webp","neon-assets/category-formula.webp","neon-assets/category-identity.webp","neon-assets/category-memory.webp","neon-assets/category-plants.webp","neon-assets/category-uae.webp","neon-assets/feud.webp","neon-assets/floor.webp","neon-assets/logo.webp","neon-assets/mystery.webp","neon-assets/trivia.webp","neon-assets/vault.webp","neon-assets/wing-left.webp","neon-assets/wing-right.webp","neon-stage.css","neon-view.js","trivia.html","vault-door.svg","vault.html","version.json"];
+const CACHE = 'jaras-neon-stage-07b-embedded-png-20261101';
+const ASSETS = ["chest-bronze.svg","chest-gold.svg","chest-silver.svg","feud.html","icon-180.png","icon-192.png","icon-512.png","index.html","jaras-audio.js","jaras-v53.js","manifest.webmanifest","mystery.html","neon-stage.css","neon-view.js","trivia.html","vault-door.svg","vault.html","version.json"];
 const scoped = name => new URL(name, self.registration.scope).href;
 self.addEventListener('install', event => {
   event.waitUntil((async () => {
