@@ -1,0 +1,23 @@
+/* Visual rebuild: gameplay code remains unchanged */
+:root{--neon-purple:#d93dff;--neon-blue:#18c7ff;--neon-gold:#ffd166}
+body.jaras-hub:not(.playing){background:radial-gradient(ellipse at 50% -10%,#59218f 0%,transparent 48%),radial-gradient(ellipse at 50% 100%,#0b3f86,transparent 60%),#07091e!important}
+body.jaras-hub:not(.playing):before{content:"";position:fixed;inset:0;pointer-events:none;background:repeating-linear-gradient(90deg,transparent 0 12%,#a553ff0a 12.1% 12.3%),linear-gradient(155deg,transparent 12%,#aa39ff19 16%,transparent 21%),linear-gradient(205deg,transparent 12%,#10caff1b 16%,transparent 21%)}
+body.jaras-hub:not(.playing) header{background:#080c2caa!important;border-bottom:1px solid #d744ff55!important;backdrop-filter:blur(12px)}
+body.jaras-hub:not(.playing) main{max-width:1700px;padding:8px clamp(12px,2.5vw,38px) 32px;position:relative}
+.stage-bell{text-align:center;font-size:clamp(58px,8vw,110px);filter:drop-shadow(0 0 20px #ffb12e);line-height:1.2;animation:bellFloat 4s ease-in-out infinite}
+body.jaras-hub:not(.playing) h1{margin:0 auto 6px;width:max-content;max-width:100%;font-size:clamp(38px,5vw,76px);color:#fff4d5;text-shadow:0 0 8px #ff5bea,0 0 28px #bd1fff,0 4px 1px #531078;border:3px solid #ed50ff;border-radius:28px;padding:8px 42px;background:linear-gradient(180deg,#431064,#170b43);box-shadow:0 0 20px #a322fa, inset 0 0 22px #a923f766}
+.stage-kicker{text-align:center;font-size:clamp(20px,2vw,30px);font-weight:900;color:#ffe7a3;margin:8px 0}
+body.jaras-hub:not(.playing) p.intro{margin:0;color:#d9d5f9}
+body.jaras-hub:not(.playing) .cards{grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(10px,1.8vw,26px);margin:24px 0 12px;direction:rtl}
+body.jaras-hub:not(.playing) .card{position:relative;isolation:isolate;min-height:clamp(340px,38vw,485px);border:3px solid var(--edge);border-radius:30px;padding:clamp(16px,2vw,30px) 12px;background:radial-gradient(ellipse at 50% 35%,var(--glow),#0a1037 75%);box-shadow:0 0 16px var(--edge),inset 0 0 20px #ffffff17,0 25px 18px #0008;transition:transform .22s,box-shadow .22s;overflow:hidden}
+body.jaras-hub:not(.playing) .card:before{content:"";position:absolute;inset:9px;border:1px solid #ffffff44;border-radius:23px;pointer-events:none}
+body.jaras-hub:not(.playing) .card:after{content:"";position:absolute;bottom:0;left:8%;width:84%;height:9px;background:var(--edge);filter:blur(13px);pointer-events:none}
+body.jaras-hub:not(.playing) .card:hover{transform:translateY(-8px);box-shadow:0 0 35px var(--edge),0 30px 28px #0009}
+body.jaras-hub:not(.playing) .card .emoji{width:100%;height:clamp(110px,15vw,190px);display:grid;place-items:center;filter:drop-shadow(0 0 20px var(--edge))}
+body.jaras-hub:not(.playing) .card .emoji svg{height:100%;max-width:90%;overflow:visible}
+body.jaras-hub:not(.playing) .card h2{font-size:clamp(21px,2.3vw,36px);text-shadow:0 0 15px var(--edge);line-height:1.35}
+body.jaras-hub:not(.playing) .card p{font-size:clamp(12px,1.25vw,17px);min-height:42px}
+body.jaras-hub:not(.playing) .card button{border:2px solid #fff9;background:linear-gradient(180deg,var(--edge),#25114d);border-radius:999px;box-shadow:0 0 18px var(--edge),inset 0 2px 4px #ffffff77;padding:14px 8px;font-size:clamp(17px,1.6vw,24px)}
+@keyframes bellFloat{50%{transform:translateY(-7px)}}
+@media(max-width:760px){body.jaras-hub:not(.playing) .cards{grid-template-columns:repeat(2,minmax(0,1fr))}body.jaras-hub:not(.playing) .card{min-height:290px}body.jaras-hub:not(.playing) h1{padding:8px 20px}}
+@media(prefers-reduced-motion:reduce){.stage-bell{animation:none}}

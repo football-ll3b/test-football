@@ -1,7 +1,7 @@
 /* Jaras V5.8: embedded 90-scene Hawk Eye bank. Never touches game saves. */
 'use strict';
-const CACHE = 'jaras-neon-v3-20261101c';
-const ASSETS = ['index.html','trivia.html','feud.html','vault.html','mystery.html','jaras-audio.js','jaras-v53.js','manifest.webmanifest','icon-180.png','icon-192.png','icon-512.png','vault-door.svg','neon-stage-v2.css','neon-stage-v3.css'];
+const CACHE = 'jaras-v58-iphone-nav-backup-20261031-1';
+const ASSETS = ['index.html','trivia.html','feud.html','vault.html','mystery.html','jaras-audio.js','jaras-v53.js','manifest.webmanifest','icon-180.png','icon-192.png','icon-512.png','vault-door.svg'];
 const scoped = name => new URL(name, self.registration.scope).href;
 self.addEventListener('install', event => {
   event.waitUntil((async () => {
