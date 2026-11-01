@@ -139,54 +139,8 @@ body.hawk-eye-live #challengeActions button{font-size:15px;padding:8px 16px;min-
 .hawk-gallery-grid figcaption{font-size:14px;padding:10px;color:#ffdf91}
 @media(max-width:700px){body.hawk-eye-live #challengeScreen{padding:12px 9px}body.hawk-eye-live .shell{padding:4px 8px 20px}.hawk-version{width:100%;text-align:center}#hawkPair{gap:5px}.hawk-meta{gap:5px}.hawk-meta .eye-progress{font-size:13px}body.hawk-eye-live #challengeTitle{font-size:22px}body.hawk-eye-live #clock{font-size:23px;padding:8px}body.hawk-eye-live #challengeType{font-size:12px}.hawk-zoom-pair{grid-template-columns:1fr;max-width:620px}.hawk-zoom{justify-content:flex-start}.hawk-zoom-bar{position:sticky;top:0;background:#061127f5;z-index:1}.hawk-gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hawk-gallery{padding:12px}}
 @media(prefers-reduced-motion:reduce){.hawk-mark{animation:none}}
-</style><link rel="stylesheet" href="neon-stage-v2.css?v=20261101b"><link rel="stylesheet" href="neon-game-rebuild.css?v=20261101r1"></head><body class="arc-game arc-mystery"><main class="shell"><div class="header"><div class="brand">✦ الصندوق المجهول</div><div class="header-right"><button id="muteBtn" onclick="toggleSound()">🔊 الصوت</button><button onclick="document.documentElement.requestFullscreen?.()">⛶ ملء الشاشة</button><button onclick="goHome()">⌂ الرئيسية</button></div></div>
-<section class="panel hero arcade-home" id="home">
-<div aria-hidden="true" class="arcade-orbs"><i></i><i></i><i></i><i></i></div>
-<div class="home-copy">
-<div class="home-eyebrow"><span class="eyebrow-dot"></span> تجربة جماعية • نيون وأركيد <span class="eyebrow-dot"></span></div>
-<div class="home-overline">هل أنت مستعد للمفاجأة؟</div>
-<h1 class="home-title">الصندوق <span>المجهول</span></h1>
-<p class="home-tagline">اختر صندوقك. اكشف المفاجأة. اكسب التحدّي!</p>
-<div aria-label="مميزات اللعبة" class="home-pills"><span>🎮 2–4 فرق</span><span>🎁 6 صناديق لكل فريق</span><span>⚡ 7 أنواع تحديات</span></div>
-<div class="home-actions">
-<button class="gold primary-start" onclick="show('setup')"><span>🎮</span> مباراة جديدة <span class="go-symbol">←</span></button>
-<button class="secondary-start" onclick="resume()">↩ متابعة المباراة</button>
-<button class="tertiary-start" onclick="show('rules')">📖 طريقة اللعب</button>
-</div>
-<div class="home-footerline">372 تحدياً متنوعاً <span>✦</span> مفاجآت وجوائز وفخاخ <span>✦</span> آيباد واحد</div>
-</div>
-<div aria-hidden="true" class="home-visual">
-<div class="stage-halo"></div><div class="stage-ring stage-ring-one"></div><div class="stage-ring stage-ring-two"></div>
-<div class="stage-star star-a">✦</div><div class="stage-star star-b">✧</div><div class="stage-star star-c">✦</div>
-<svg aria-label="صندوق هدية مضيء" class="neon-gift" role="img" viewbox="0 0 480 480" xmlns="http://www.w3.org/2000/svg">
-<defs>
-<lineargradient id="front" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#a132e5"></stop><stop offset=".5" stop-color="#5e28bd"></stop><stop offset="1" stop-color="#28116c"></stop></lineargradient>
-<lineargradient id="right" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#5925ac"></stop><stop offset="1" stop-color="#1a104e"></stop></lineargradient>
-<lineargradient id="top" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#fc83ff"></stop><stop offset="1" stop-color="#8c37c9"></stop></lineargradient>
-<lineargradient id="ribbon" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#fff4b1"></stop><stop offset=".5" stop-color="#ffc65e"></stop><stop offset="1" stop-color="#e57f32"></stop></lineargradient>
-<filter id="glow"><fegaussianblur result="b" stddeviation="9"></fegaussianblur><femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
-<filter id="shadow"><fegaussianblur stddeviation="13"></fegaussianblur></filter>
-</defs>
-<ellipse cx="242" cy="405" fill="#20caff" filter="url(#shadow)" opacity=".55" rx="142" ry="25"></ellipse>
-<path d="M111 171 L249 132 L374 177 L236 223Z" fill="url(#top)" stroke="#fb9dff" stroke-width="5"></path>
-<path d="M111 171 L236 223 L236 383 L111 331Z" fill="url(#front)" stroke="#c069f5" stroke-width="5"></path>
-<path d="M236 223 L374 177 L374 330 L236 383Z" fill="url(#right)" stroke="#b065ef" stroke-width="5"></path>
-<path d="M213 215 L259 199 L259 377 L213 386Z" fill="url(#ribbon)" opacity=".98"></path>
-<path d="M172 154 L219 140 L337 192 L292 208Z" fill="url(#ribbon)"></path>
-<path d="M110 161 L236 210 L374 167 L374 203 L236 250 L110 199Z" fill="#ae42ec" stroke="#f694fd" stroke-width="4"></path>
-<path d="M211 200 L255 187 L255 237 L211 248Z" fill="url(#ribbon)"></path>
-<path d="M181 139 C119 94 137 66 179 83 C205 92 221 125 235 155 C209 151 191 149 181 139Z" fill="#ffce6e" stroke="#ffeab0" stroke-width="7"></path>
-<path d="M286 129 C340 83 335 55 296 72 C261 87 252 123 235 155 C255 148 275 139 286 129Z" fill="#f7a945" stroke="#fff0a8" stroke-width="7"></path>
-<path d="M236 155 C225 126 209 122 190 129 C194 147 217 166 236 155Z" fill="#ffe68b"></path>
-<path d="M236 155 C256 123 271 119 286 128 C279 146 253 166 236 155Z" fill="#ffe68b"></path>
-<circle cx="238" cy="157" fill="url(#ribbon)" r="17" stroke="#fff5bf" stroke-width="4"></circle>
-<text fill="#f8e7ff" filter="url(#glow)" font-family="Tahoma,Arial,sans-serif" font-size="91" font-weight="bold" text-anchor="middle" x="172" y="315">?</text>
-<path d="M101 220 L91 212 M380 246 L395 237 M314 95 L322 81" filter="url(#glow)" stroke="#65eaff" stroke-linecap="round" stroke-width="7"></path>
-</svg>
-<div class="stage-platform"><span></span></div>
-<div class="visual-label">كل صندوق ... حكاية!</div>
-</div>
-</section>
+</style><link rel="stylesheet" href="neon-stage.css?v=stage7"><script src="neon-view.js?v=stage7" defer></script></head><body class="neon-app neon-mystery" data-neon-build="stage-7"><main class="shell"><div class="header"><div class="brand">✦ الصندوق المجهول</div><div class="header-right"><button id="muteBtn" onclick="toggleSound()">🔊 الصوت</button><button onclick="document.documentElement.requestFullscreen?.()">⛶ ملء الشاشة</button><button onclick="goHome()">⌂ الرئيسية</button></div></div>
+<section id="home" class="neon-lobby"><div class="lobby-set" aria-hidden="true"></div><div class="lobby-copy"><div class="lobby-kicker">NEON ARCADE <span>✦</span> JARAS</div><h1 class="lobby-title">الصندوق  المجهول</h1><p class="lobby-subtitle">اختر صندوقك. اكشف المفاجأة. اكسب التحدّي!</p><div class="lobby-actions"><button class="gold primary-start" onclick="show('setup')"><span>🎮</span> مباراة جديدة <span class="go-symbol">←</span></button><button class="secondary-start" onclick="resume()">↩ متابعة المباراة</button><button class="tertiary-start" onclick="show('rules')">📖 طريقة اللعب</button></div><p class="lobby-meta">🎮 2–4 فرق  🎁 6 صناديق لكل فريق  ⚡ 7 أنواع تحديات</p></div><div class="lobby-art" aria-hidden="true"><div class="lobby-halo"></div><img src="neon-assets/mystery.webp" alt="" width="400" height="360"><div class="lobby-plinth"></div><span class="lobby-spark">✦</span></div></section>
 <section class="panel hidden" id="rules"><h2>📜 نظام اللعب</h2><p class="lead">كل فريق يفتح 6 صناديق، بالتناوب. منها 5 تحديات وصندوق مفاجأة (جائزة أو فخ). يتم توزيع تحديات الفريق من أنواع متنوعة، مع محاولة توازن الأنواع بين الفرق. يظهر التحدي ويبدأ الوقت عند الضغط على زر بدء التحدي. تحديات العين والذاكرة والترتيب تتحقق داخل اللعبة؛ التمثيل وممنوع تقول وسباق الوقت يحكم عليها المقدّم.</p><p>في عين الصقر اضغط على الاختلاف في الصورة اليمنى. في الذاكرة احفظ ترتيب الرموز ثم اضغط عليها بالترتيب بعد إخفائها. في الترتيب اضغط الخطوات من الأولى للأخيرة. تعطي بعض التحديات نقاطاً جزئية بحسب التقدم.</p><p class="note">عين الصقر: 90 مشهداً مختلفاً، موزعة بالتساوي على السهل والمتوسط والصعب. كل مشهد له صورتان وخمسة اختلافات موضعية؛ المؤقت 60 ثانية، و20 نقطة لكل اختلاف و25 للإكمال. الصور مضمّنة داخل ملف اللعبة. لا تعرض كلمة التمثيل أو ممنوع تقول للفريق المخمّن قبل تسليم الآيباد للممثّل أو الواصف.</p><button onclick="show('home')">رجوع</button></section>
 <section class="panel hidden setup-arcade" id="setup">
  <div class="setup-head"><span class="setup-chip">🎮 مباراة جديدة</span><h2>جهّز فريقك وابدأ التحدّي!</h2><p>اختر عدد الفرق، سمِّ كل فريق، وبعد القرعة تبدأ مغامرة الصناديق.</p></div>

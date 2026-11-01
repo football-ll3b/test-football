@@ -1,0 +1,621 @@
+/* JARAS - NEON STAGE 07. Presentation only. No gameplay or storage rules. */
+:root { --neon-cyan:#3eeaff; --neon-pink:#ee53ff; --neon-gold:#ffcf68; --neon-surface:#0b1033; --neon-text:#f6f7ff; --neon-muted:#bcc7e7; }
+html { scroll-padding-top:76px; }
+body.neon-app { margin:0; min-width:0; color:var(--neon-text)!important; background:radial-gradient(ellipse at 50% -12%,#3b176b 0,transparent 52%),radial-gradient(ellipse at 95% 65%,#0b3360 0,transparent 46%),linear-gradient(150deg,#080c26,#12082c 56%,#060b24)!important; background-attachment:fixed!important; -webkit-font-smoothing:antialiased; }
+.neon-app *, .neon-app *::before, .neon-app *::after { box-sizing:border-box; }
+.neon-app::before { content:""; position:fixed; z-index:-1; inset:0; pointer-events:none; background:linear-gradient(115deg,transparent 22%,#3898ff0a 24%,transparent 35%),linear-gradient(245deg,transparent 22%,#f037ff0a 24%,transparent 35%); }
+.neon-app button,.neon-app input,.neon-app select { font:inherit; }
+.neon-app button { min-height:44px; padding:11px 17px; border-radius:14px!important; border:1px solid #87aaff!important; color:#f5f7ff!important; background:linear-gradient(180deg,#253e84 0,#132859 44%,#111b40 100%)!important; box-shadow:inset 0 1px 1px #ffffff7a,inset 0 -3px 6px #060c34,0 5px 12px #0005; font-weight:750; cursor:pointer; transition:transform .14s,box-shadow .14s,filter .14s; touch-action:manipulation; line-height:1.4; }
+.neon-app button:hover:not(:disabled){filter:brightness(1.14);transform:translateY(-1px)}
+.neon-app button:active:not(:disabled){transform:translateY(1px);box-shadow:inset 0 2px 5px #050a32,0 0 16px #64c9ff44}
+.neon-app button:focus-visible,.neon-app a:focus-visible,.neon-app input:focus-visible,.neon-app select:focus-visible,.neon-app summary:focus-visible{outline:3px solid #fff2b1;outline-offset:3px}
+.neon-app button:disabled{cursor:default;filter:saturate(.4);opacity:.5;transform:none}
+.neon-app button.gold,.neon-app .lobby-actions>button:first-child{color:#fff8e3!important;border-color:#ffe4a4!important;background:linear-gradient(180deg,#c78618,#784105 55%,#431c09)!important;box-shadow:inset 0 2px 4px #fff9b7,0 0 0 2px #f09d2440,0 0 17px #ffad3340,0 7px 16px #0007;text-shadow:0 1px 4px #5a2100}
+.neon-app button.danger,.neon-app button.red,.neon-app button.pink{border-color:#ff6eaa!important;background:linear-gradient(180deg,#a02162,#550e3a)!important;box-shadow:inset 0 1px #ffb9d0,0 0 15px #ff247329,0 4px 8px #0005}
+.neon-app button.good,.neon-app button.green{border-color:#57efd2!important;background:linear-gradient(180deg,#147973,#074640)!important;box-shadow:inset 0 1px #9cf5d6,0 0 14px #2fffc220,0 4px 8px #0005}
+.neon-app input:not([type=checkbox]):not([type=range]):not([type=color]),.neon-app select{width:100%;min-width:0;color:#f6f7ff!important;background:#070e28!important;border:1px solid #617dc2!important;border-radius:12px;padding:13px 14px;min-height:46px;box-shadow:inset 0 3px 7px #0005}
+.neon-app input[type=checkbox]{width:22px;height:22px;min-height:22px;accent-color:#39caff;vertical-align:middle;cursor:pointer;flex-shrink:0}
+.neon-app input[type=color]{padding:4px;border:1px solid #5c7db4;border-radius:10px;background:#111d3c;min-height:42px}
+.neon-app input[type=range]{accent-color:#7b7eff;min-height:32px}
+.neon-app select option{background:#0a1532;color:white}
+.neon-app h1,.neon-app h2,.neon-app h3{line-height:1.35}
+.neon-app .muted,.neon-app .note,.neon-app .small{color:var(--neon-muted)}
+.neon-app .small{line-height:1.65}
+.neon-app .hide,.neon-app .hidden,.neon-app [hidden]{display:none!important}
+.neon-app .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.neon-app main,.neon-app .wrap,.neon-app .shell{width:100%;max-width:1500px;margin:0 auto;padding:12px clamp(12px,2.3vw,30px) 28px;}
+.neon-app .panel,.neon-feud .card{background:radial-gradient(ellipse at 50% 0,#25204b99,transparent 70%),linear-gradient(135deg,#101738ee,#090d29f5)!important;border:1px solid #7772c0!important;border-radius:22px!important;box-shadow:inset 0 1px #ffffff21,0 10px 32px #0005,0 0 20px #6d30c012;padding:clamp(16px,2vw,24px);margin:12px 0;animation:none!important}
+.neon-app .panel>h2,.neon-feud .card>h2{color:#ffe6a3;font-size:clamp(22px,2.6vw,32px)}
+.neon-app .footer{font-size:11px;margin:14px auto 0;color:#a1a8cc;max-width:90%;line-height:1.65}
+.neon-app .row,.neon-app .controls,.neon-app .actionbar{gap:10px}
+.neon-app .row>*{min-width:0}
+.neon-app .row button{white-space:normal}
+.neon-app .wide{width:100%}
+.neon-app .settings-section,.neon-app .question-tools{background:#111936;border:1px solid #6458a6;border-radius:15px;padding:12px;margin:12px 0}
+.neon-app summary{cursor:pointer;min-height:36px;padding:5px 8px;color:#d9dcff;font-weight:750}
+.neon-app details[open]>summary{margin-bottom:12px;color:#ffe29d}
+.neon-app .settings-section>.settings{gap:16px}
+.neon-app .settings-section label{line-height:1.8}
+/* Hub: one title, a four-card row on landscape tablets, an actual stage. */
+body.neon-hub:not(.playing){min-height:100vh;min-height:100dvh;overflow-x:hidden}
+.neon-hub .hub-toolbar{height:54px;padding:8px clamp(14px,2.5vw,36px);display:flex;align-items:center;justify-content:space-between;position:relative;top:auto;background:linear-gradient(180deg,#07091eaa,transparent);border:0;z-index:10}
+.neon-hub .hub-version{font:600 11px system-ui;letter-spacing:.14em;color:#a3b9d4;direction:ltr}
+.neon-hub .hub-version b{display:inline-block;border:1px solid #6470ac;border-radius:6px;padding:3px 6px;color:#eef2ff;font-size:10px;margin-left:5px}
+.neon-hub .hub-tools{display:flex;align-items:center;gap:9px;direction:rtl}
+.neon-hub .hub-tools>button{min-height:38px;font-size:13px;padding:7px 12px;border-radius:12px!important;background:#0d173aee!important}
+.neon-hub main.hub-stage{position:relative;isolation:isolate;display:grid;grid-template-rows:minmax(120px,.30fr) minmax(270px,.70fr) 34px;gap:8px;height:calc(100vh - 54px);height:calc(100dvh - 54px);min-height:500px;max-height:1100px;max-width:1640px;padding:0 clamp(22px,4vw,64px) 26px;margin:0 auto}
+.neon-hub .hub-marquee{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:0;padding:0;z-index:2}
+.neon-hub .brand-logo{width:auto;height:calc(100% - 22px);max-width:min(66vw,700px);object-fit:contain;display:block;filter:drop-shadow(0 3px 12px #ae2af644)}
+.neon-hub .hub-marquee .intro{font-size:clamp(12px,1.25vw,17px);line-height:1.3;margin:0;color:#d6ccf4;text-align:center}
+.neon-hub .arcade-deck{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,2vw,28px);align-items:stretch;position:relative;z-index:2;min-height:0;padding:4px 0 18px}
+.neon-hub .arcade-card{--accent:#42edee;--shade:#07585c;position:relative;min-width:0;min-height:0;text-align:center;display:grid;grid-template-rows:minmax(85px,1fr) auto auto auto;align-items:center;gap:8px;padding:16px 16px 20px;border-radius:36px;border:2px solid var(--accent);background:radial-gradient(ellipse at 50% 26%,var(--shade),transparent 65%),linear-gradient(165deg,#101d3e,#070b23 62%,#141338);box-shadow:0 0 0 4px #1b1644,0 0 0 5px #ffffff2a,inset 0 0 0 5px #070d24,inset 0 -12px 20px var(--shade),0 0 22px color-mix(in srgb,var(--accent) 45%,transparent),0 16px 22px #0009;isolation:isolate;}
+.neon-hub .arcade-feud{--accent:#ffb64b;--shade:#71320f}
+.neon-hub .arcade-vault{--accent:#39c8ff;--shade:#0b396e}
+.neon-hub .arcade-mystery{--accent:#f064ff;--shade:#4a156a}
+.neon-hub .card-rim{position:absolute;inset:8px;border:1px solid color-mix(in srgb,var(--accent) 55%,transparent);border-radius:27px;pointer-events:none;z-index:-1}
+.neon-hub .arcade-card::after{content:"";position:absolute;top:0;right:16%;left:16%;height:3px;border-radius:50%;background:white;box-shadow:0 0 12px 4px var(--accent);pointer-events:none}
+.neon-hub .arcade-art{height:100%;min-height:0;position:relative;display:flex;justify-content:center;align-items:center}
+.neon-hub .arcade-art img{width:100%;height:100%;max-height:300px;object-fit:contain;filter:drop-shadow(0 8px 16px #0006)}
+.neon-hub .arcade-card h2{font-size:clamp(18px,2vw,31px);font-weight:900;letter-spacing:-.03em;margin:0;line-height:1.4;color:#fff;text-shadow:0 3px 0 #080c29,0 0 15px color-mix(in srgb,var(--accent) 35%,transparent)}
+.neon-hub .arcade-card p{font-size:clamp(11px,1.05vw,15px);line-height:1.6;color:#cbd2ea;margin:0;min-height:1.5em}
+.neon-hub .arcade-card button{font-size:clamp(15px,1.4vw,21px);width:100%;min-height:46px;margin:5px auto 0;border:2px solid #e7f5ff!important;border-radius:40px!important;background:linear-gradient(180deg,var(--shade),#0b1028 85%)!important;box-shadow:inset 0 2px 6px #ffffff77,0 0 0 2px var(--accent),0 0 17px color-mix(in srgb,var(--accent) 65%,transparent);white-space:nowrap;color:#fff!important;padding:8px 10px}
+.neon-hub .card-plinth{position:absolute;bottom:-21px;left:-3%;width:106%;height:25px;border-radius:5px 5px 40% 40%;background:linear-gradient(180deg,#1e2561 0,var(--shade) 20%,#070d29 65%,#2e246a 98%);border-top:3px solid var(--accent);box-shadow:0 8px 12px #0007;z-index:-2;transform:perspective(200px) rotateX(24deg)}
+.neon-hub .hub-floor{position:absolute;bottom:-1px;left:0;right:0;height:28%;background:url('neon-assets/floor.webp') center bottom/100% 100% no-repeat;z-index:-1;mask-image:linear-gradient(transparent,#000 32%);-webkit-mask-image:linear-gradient(transparent,#000 32%);pointer-events:none}
+.neon-hub .stage-set{position:absolute;inset:-54px 0 0;overflow:hidden;z-index:-2;pointer-events:none;background:radial-gradient(ellipse at 50% 35%,#191155,transparent 70%)}
+.neon-hub .stage-set::before,.neon-hub .stage-set::after{content:"";position:absolute;bottom:12%;top:9%;width:8%;opacity:.7;background:var(--wing) center/100% 100% no-repeat}
+.neon-hub .stage-set::before{left:0;--wing:url('neon-assets/wing-left.webp')}
+.neon-hub .stage-set::after{right:0;--wing:url('neon-assets/wing-right.webp')}
+.neon-hub .stage-set i{position:absolute;left:3%;right:3%;top:0;bottom:5%;border-radius:50% 50% 18% 18%;border:2px solid #6425ae;box-shadow:0 0 20px #b638ff27,inset 0 0 35px #8024d322;transform:scale(1.04)}
+.neon-hub .stage-set i:nth-child(2){left:9%;right:9%;top:4%;bottom:12%;border-color:#247ac157;box-shadow:none}
+.neon-hub .stage-set i:nth-child(3){width:18%;height:100%;left:12%;right:auto;top:-10%;border:0;border-radius:0;transform:rotate(24deg);background:linear-gradient(180deg,#38d7ff26,transparent 70%);clip-path:polygon(40% 0,55% 0,100% 100%,0 100%)}
+.neon-hub .stage-set i:nth-child(4){width:18%;height:100%;right:12%;left:auto;top:-10%;border:0;border-radius:0;transform:rotate(-24deg);background:linear-gradient(180deg,#f33cfc26,transparent 70%);clip-path:polygon(40% 0,55% 0,100% 100%,0 100%)}
+.neon-hub #settings{position:fixed;z-index:1000;inset:auto;top:75px;left:50%;transform:translateX(-50%);width:min(570px,calc(100vw - 28px));max-height:calc(100dvh - 98px);overflow:auto;margin:0;padding:22px;border:2px solid #af8aff!important;background:#10132ff7!important;box-shadow:0 0 0 100vmax #030414c9,0 0 40px #873bda65;}
+.neon-hub #settings h2{font-size:23px}.neon-hub #settings label.setting{padding:13px 0;line-height:1.5}.neon-hub #settings .note{font-size:13px}
+/* Player shell: actual flex height, never a fixed minimum on the iframe. */
+.neon-hub #player{display:none}
+.neon-hub.playing{position:fixed!important;inset:0!important;width:100%!important;height:100dvh!important;overflow:hidden!important}
+.neon-hub.playing .hub-toolbar,.neon-hub.playing main.hub-stage{display:none!important}
+.neon-hub.playing #player{position:fixed;inset:0;display:flex!important;flex-direction:column;height:100vh;height:100dvh;width:100%;overflow:hidden}
+.neon-hub.playing #playerbar{flex:0 0 auto;display:flex;flex-wrap:nowrap;align-items:center;justify-content:space-between;gap:9px;min-height:55px;padding:8px max(12px,env(safe-area-inset-right)) 8px max(12px,env(safe-area-inset-left));background:linear-gradient(90deg,#101332,#1b1036,#0a1935);border-bottom:1px solid #8c5ee8;box-shadow:0 2px 14px #25145e77;position:relative;z-index:1000}
+.neon-hub.playing #playerbar>button{min-height:38px;padding:8px 12px;font-size:13px;flex-shrink:0}
+.neon-hub.playing #gameTitle{flex:1;min-width:0;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:clamp(16px,1.9vw,25px);font-weight:850;color:white;text-shadow:0 0 12px #e451ff6b}
+.neon-hub.playing #frame{display:block;width:100%;border:0;flex:1 1 auto;height:0!important;min-height:0!important;background:#090c27}
+.neon-hub #jarasAudioControls{position:relative!important;inset:auto!important;z-index:1100;font:inherit;direction:rtl;flex-shrink:0}
+.neon-hub #jarasAudioControls #jaOpen{height:38px;min-height:38px;font-size:13px;padding:8px 12px;background:#111d43!important;border-color:#7a9ee8!important}
+.neon-hub #jarasAudioPanel{position:absolute;top:48px;left:0;min-width:280px;max-width:calc(100vw - 24px);max-height:calc(100dvh - 90px);overflow:auto;background:#10162ffb;border:1px solid #ad86ff;border-radius:17px;box-shadow:0 14px 40px #000a;z-index:1101}
+/* Shared in-game navigation; original handlers and settings stay accessible. */
+.neon-trivia .nav,.neon-feud .top,.neon-mystery .header{margin:0 0 12px!important;padding:6px 8px!important;border:1px solid #6e67aa66!important;border-radius:13px!important;min-height:48px;background:#0a102bbb!important;box-shadow:none!important;display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;position:relative;z-index:3}
+.neon-trivia .nav{justify-content:center}
+.neon-trivia .nav button,.neon-feud .top button,.neon-mystery .header button{font-size:12px;min-height:35px;padding:7px 11px;border-radius:10px!important}
+.neon-feud .top h1,.neon-mystery .header .brand{font-size:clamp(19px,2.1vw,26px);margin:0;color:#fff!important;text-shadow:0 0 15px #c449ff66}
+.neon-embedded.neon-feud .top h1,.neon-embedded.neon-mystery .header>.brand{display:none}
+.neon-embedded.neon-feud .top>.row{width:100%}
+.neon-mystery .header-right{margin-inline-start:auto}
+.neon-feud #connection{font-size:11px;border:1px solid #465f95;background:#112442;padding:5px 9px;line-height:1.5}
+.neon-app.neon-on-home .footer{display:none}
+/* Four redesigned lobbies with the real original action controls. */
+.neon-app section.neon-lobby{position:relative;isolation:isolate;display:grid;grid-template-columns:1.08fr 1fr;gap:clamp(18px,4vw,60px);align-items:center;min-height:calc(100dvh - 105px);margin:0!important;padding:clamp(20px,4vw,54px)!important;border-radius:30px!important;border:1px solid #9a66d6!important;background:radial-gradient(ellipse at 20% 40%,#45166870,transparent 56%),linear-gradient(145deg,#101336d6,#070b23f2)!important;box-shadow:inset 0 0 60px #44246722,0 0 0 4px #04071d66,0 0 22px #9930ff22;overflow:hidden}
+.neon-app .lobby-set{position:absolute;inset:0;pointer-events:none;z-index:-1;background:linear-gradient(115deg,transparent 2%,#7136b41c 12%,transparent 24%),linear-gradient(245deg,transparent 2%,#2d91d41c 12%,transparent 24%),url('neon-assets/floor.webp') center bottom / 100% 19% no-repeat}
+.neon-app .lobby-set::before{content:"";position:absolute;inset:5% 3% 6%;border:2px solid #773dcc55;border-bottom-color:#3acbff88;border-radius:45% 45% 10% 10%;box-shadow:0 0 24px #8c31ec33,inset 0 0 20px #4f38a122;z-index:-1}
+.neon-app .lobby-copy{position:relative;min-width:0;text-align:center;z-index:1}
+.neon-app .lobby-kicker{font:600 10px system-ui;letter-spacing:.22em;color:#91a6d8;margin-bottom:18px;direction:ltr}
+.neon-app .lobby-kicker span{color:#ffda7e;margin:0 10px}
+.neon-app h1.lobby-title{font-size:clamp(31px,4.1vw,58px)!important;color:#fff!important;text-shadow:0 3px 0 #311340,0 0 22px #d653f77a;display:block;width:100%;padding:12px 18px;margin:0 0 18px;border:2px solid #bd66f7;border-radius:22px;background:linear-gradient(180deg,#271547,#100b2c);box-shadow:inset 0 2px 5px #e891ff5c,0 0 4px #fff,0 0 20px #d447ef60;line-height:1.35}
+.neon-app .lobby-subtitle{font-size:clamp(14px,1.6vw,21px);line-height:1.8;color:#d2d4e9;margin:16px auto 24px}
+.neon-app .lobby-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.neon-app .lobby-actions>button{min-height:58px!important;border-radius:16px!important;border:1px solid #9695ff!important;font-size:clamp(14px,1.5vw,20px);padding:12px 10px!important;background:linear-gradient(180deg,#251955,#111032)!important;box-shadow:inset 0 2px 3px #b4bdff77,0 0 8px #3260f266,0 5px 14px #0005;line-height:1.5}
+.neon-app .lobby-actions>button:first-child{border-color:#ffe0a1!important}
+.neon-app .lobby-meta{font-size:clamp(10px,1.05vw,14px);color:#b4bbdc;margin:24px 0 0;line-height:1.8}
+.neon-app .lobby-art{position:relative;isolation:isolate;display:flex;align-items:center;justify-content:center;aspect-ratio:1.07;min-width:0;align-self:center}
+.neon-app .lobby-art>img{width:94%;height:94%;object-fit:contain;z-index:1;filter:drop-shadow(0 15px 18px #0007)}
+.neon-app .lobby-halo{position:absolute;inset:5%;border:1px solid #7b54ce77;border-radius:50%;background:radial-gradient(ellipse,#7e29ad77,#27266855 50%,transparent 72%);box-shadow:0 0 25px #653cc744,inset 0 0 30px #ae43c733;z-index:-1}
+.neon-app .lobby-halo::after{content:"";position:absolute;inset:12%;border:1px dashed #79c7ff55;border-radius:50%}
+.neon-app .lobby-plinth{position:absolute;bottom:-3%;width:106%;height:22%;border-radius:50%;background:linear-gradient(180deg,#26216d,#070b26 55%,#16154c);border-top:3px solid #ee9bff;border-bottom:3px solid #3cd9ff;box-shadow:0 -3px 14px #f451ff44,0 6px 10px #20b6ff44;z-index:0}
+.neon-app .lobby-spark{position:absolute;top:3%;left:12%;color:#ffeab2;font-size:24px;text-shadow:0 0 15px #e85cfa}
+.neon-vault section.neon-lobby{border-color:#bd945a!important;background:radial-gradient(ellipse at 20% 40%,#634c1770,transparent 56%),linear-gradient(145deg,#161434df,#070b23f2)!important;min-height:calc(100dvh - 50px)}
+.neon-vault h1.lobby-title{border-color:#ffd36c;box-shadow:inset 0 2px 5px #ffb96255,0 0 4px #ffe0aa,0 0 20px #dd972943;background:linear-gradient(180deg,#402c22,#19102d)}
+.neon-vault .lobby-halo{background:radial-gradient(ellipse,#90571588,#26316c55 50%,transparent 72%);border-color:#ffe18c77}
+.neon-feud .lobby-title{border-color:#ffb45c!important}
+.neon-feud .lobby-halo{background:radial-gradient(ellipse,#9d4e1988,#32175155 55%,transparent 72%)}
+.neon-trivia .lobby-halo{background:radial-gradient(ellipse,#00777988,#123f6d55 55%,transparent 72%);border-color:#42e9ee77}
+.neon-trivia h1.lobby-title{border-color:#4ee3ff;box-shadow:inset 0 2px 5px #80f0f577,0 0 4px #e1faff,0 0 20px #35d3ef55}
+.neon-mystery .lobby-actions>button:first-child{grid-column:1/-1}
+.neon-mystery .lobby-actions .go-symbol{display:none}
+/* Trivia setup: art-backed categories and original settings/power selections. */
+.neon-trivia #categoryChoices{grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+.neon-trivia .choice{position:relative;min-width:0;min-height:83px;padding:12px 10px;gap:7px;border:1px solid #586795;border-radius:16px;background:linear-gradient(140deg,#20284b,#101630);font-size:14px;line-height:1.55;cursor:pointer}
+.neon-trivia .choice.selected{border:2px solid #ffd27d;background:linear-gradient(140deg,#3e314a,#211b30);box-shadow:inset 0 1px #ffeab86b,0 0 12px #fdb84625}
+.neon-trivia .choice .category-emoji{font-size:28px;filter:drop-shadow(0 4px 5px #0005)}
+.neon-trivia #selectionCount{padding:9px;border:1px solid #8171ac;border-radius:12px;color:#f6dc9f;background:#241f4055}
+.neon-trivia #teamInputs,.neon-trivia #aidChoices{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.neon-trivia .teamcard{background:linear-gradient(135deg,color-mix(in srgb,var(--team-color,#5278c2) 18%,#0d1434),#0a102b);border-width:2px;border-radius:19px;box-shadow:0 6px 18px #0004,inset 0 1px #ffffff2b;padding:18px;color:#e5ecff}
+.neon-trivia #aidChoices .teamcard>b{display:block;font-size:17px;color:#ffe2a2;padding-bottom:12px}
+.neon-trivia #aidChoices label{display:flex!important;align-items:center;gap:10px;padding:10px 8px;margin:5px 0!important;border-radius:9px;background:#040c2466;line-height:1.4}
+.neon-trivia #aidChoices label:has(input:checked){background:#19355599;outline:1px solid #38c5e955}
+.neon-trivia #setup>h2:not(:first-child){margin-top:30px;padding-top:20px;border-top:1px solid #706ba555}
+.neon-trivia #setup>button.gold{margin-top:14px;min-height:54px}
+/* Trivia playing board: 6 real illustrated cards; existing 2/3-column toggle respected. */
+.neon-trivia #game>.panel:first-child{position:relative;padding:12px 16px!important;margin:8px 0!important;background:#0a1030cc!important;border:1px solid #7260b4!important}
+.neon-trivia #turnInfo{font-size:18px!important;line-height:1.4;margin:0 0 8px!important;color:#ffe6a7}
+.neon-trivia #scoreboard{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px!important}
+.neon-trivia #scoreboard .score{position:relative;display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:10px;padding:10px 14px!important;min-height:84px!important;font-size:14px!important;border-width:2px!important;border-radius:17px!important;background:linear-gradient(135deg,color-mix(in srgb,var(--team-color,#36bfff) 25%,#0b1739),#0a112b)!important;box-shadow:0 0 13px color-mix(in srgb,var(--team-color,#36bfff) 30%,transparent),inset 0 1px #ffffff33!important;text-align:right}
+.neon-trivia #scoreboard .score[data-active=true]{outline:2px solid #fff3bf;outline-offset:3px}
+.neon-trivia #scoreboard .score strong{grid-column:2;grid-row:2/span 2;font-size:34px!important;line-height:1!important;text-shadow:0 2px 8px #0009;margin:0!important}
+.neon-trivia #scoreboard .team-aids{grid-column:1/-1;display:flex;flex-wrap:wrap;justify-content:flex-start;gap:5px;margin:0 0 7px!important}
+.neon-trivia #scoreboard .team-aid{font-size:11px!important;padding:3px 8px!important;min-height:24px;background:#072b37;border:1px solid #4a9d98;border-radius:20px;box-shadow:none;line-height:1.5}
+.neon-trivia #scoreboard .team-aid.used{opacity:.45;text-decoration:line-through}
+.neon-trivia #progress{font-size:12px!important;line-height:1.2;margin:8px 0 0!important;color:#b7bfe2}
+.neon-trivia #boardPanel{position:relative;padding:12px!important;margin:12px 0!important;border:2px solid #9c64e3!important;background:linear-gradient(180deg,#141137df,#070c25f5)!important;box-shadow:inset 0 1px 4px #dbb5ff55,0 0 20px #9136d833}
+.neon-trivia #boardPanel>.row{justify-content:center!important;margin:0 0 12px!important;gap:8px}
+.neon-trivia #boardPanel>.row>button{flex:0 0 auto!important;width:auto!important;min-height:32px!important;padding:5px 14px!important;font-size:12px!important}
+.neon-trivia #board{display:grid!important;grid-template-columns:repeat(6,minmax(0,1fr))!important;gap:10px!important;margin:0!important}
+.neon-trivia #board[style*="repeat(3"]{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+.neon-trivia #board[style*="repeat(2"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+.neon-trivia #board .cat{position:relative;display:flex!important;flex-direction:column;padding:9px!important;min-width:0;border:1px solid #9c83ff!important;border-radius:20px!important;background:linear-gradient(150deg,#1d1743,#07122c 70%)!important;box-shadow:inset 0 1px 3px #d8bdff6b,0 5px 12px #0008,0 0 7px #8540d73d}
+.neon-trivia #board .cat-icon{position:relative;display:flex;align-items:center;justify-content:center;min-height:75px;height:clamp(75px,8vw,115px);font-size:52px;margin:0 0 5px!important;line-height:1;filter:none;background:radial-gradient(ellipse,#614bbe66,#091331 78%);border-radius:13px;overflow:hidden}
+.neon-trivia #board .cat-icon img{width:100%;height:100%;object-fit:cover;display:block}
+.neon-trivia #board .cat h3{font-size:clamp(13px,1.5vw,20px)!important;line-height:1.35!important;min-height:36px!important;height:auto!important;margin:0 0 7px!important;display:flex;align-items:center;justify-content:center;color:white}
+.neon-trivia #board .cat button{font-size:clamp(19px,2.15vw,29px)!important;font-weight:850;min-height:37px!important;height:auto!important;margin:3px 0!important;padding:3px 2px!important;line-height:1.25!important;border:1px solid #8dcaff!important;border-radius:12px!important;background:linear-gradient(180deg,#1a71c5,#132d7c 55%,#102052)!important;box-shadow:inset 0 1px 3px #c6f5ff9c,0 3px 5px #0008,0 0 6px #1bb6fb45}
+.neon-trivia #board .cat button[data-value="400"]{background:linear-gradient(180deg,#802db6,#46126b 65%,#290f48)!important;border-color:#ea9aff!important;box-shadow:inset 0 1px 3px #f8baff88,0 3px 5px #0008,0 0 6px #d343f745}
+.neon-trivia #board .cat button[data-value="600"]{background:linear-gradient(180deg,#a86d14,#693a09 65%,#351a08)!important;border-color:#ffe0a1!important;box-shadow:inset 0 1px 3px #fff0aa99,0 3px 5px #0008,0 0 6px #ffb22a45}
+.neon-trivia #board .cat button.claimed{background:var(--claimed-bg,#233456)!important;border-color:#a5b1c7!important;color:#dee3ed!important;filter:saturate(.45);opacity:.68;box-shadow:inset 0 2px 8px #0006!important}
+.neon-trivia #hostAdminBar{padding:14px!important;border:1px dashed #9f875a!important;background:#10142c!important}
+.neon-trivia #hostAdminBar::before{display:none}
+.neon-trivia #hostAdminBar h3{font-size:17px}
+.neon-trivia #hostAdminBar button{font-size:13px;min-height:40px}
+/* Trivia question and answer, NOT multiple-choice. */
+.neon-trivia #questionPanel{display:block;position:relative;max-width:1100px!important;margin:12px auto!important;padding:18px 22px!important;border:2px solid #ab69ed!important;background:radial-gradient(ellipse at 50% 0,#1c2455,#0b1030 70%)!important;box-shadow:0 0 0 3px #1c1845,0 0 28px #bf38e92b!important;text-align:center}
+.neon-trivia #questionPanel.hide{display:none!important}
+.neon-trivia #qmeta{font-size:14px!important;margin:0 0 12px!important;color:#93e9ff}
+.neon-trivia #qtext{font-size:clamp(23px,3vw,38px)!important;color:white!important;line-height:1.7!important;padding:15px 12px!important;margin:8px 0!important;min-height:70px}
+.neon-trivia #questionPanel #clock{display:inline-flex!important;align-items:center;justify-content:center;min-width:82px!important;min-height:72px!important;border:3px solid #79dfff;border-radius:50%!important;font-size:34px!important;line-height:1.1!important;color:#fff6bd!important;background:radial-gradient(circle,#111d42,#080a25);box-shadow:0 0 0 4px #3c236d,0 0 20px #33c8ff45;margin:8px!important;padding:10px!important;position:static!important}
+.neon-trivia #phaseLabel,.neon-trivia #ownerLabel{font-size:13px!important;padding:6px 10px!important;margin:7px 0!important;background:#161b3c;border-radius:10px;color:#d7daf2}
+.neon-trivia #revealBtn{min-height:50px!important;font-size:20px!important;max-width:620px;margin:14px auto!important;display:block}
+.neon-trivia #answerSection{background:#0b2e37;border:1px solid #3fc8b0;border-radius:16px;padding:16px;margin:12px 0}
+.neon-trivia #answerText{font-size:clamp(22px,3vw,34px)!important;margin:10px!important;color:#a0ffdc}
+.neon-trivia #awardButtons{gap:10px}
+.neon-trivia .question-tools{margin:10px 0!important;text-align:right}
+.neon-trivia .question-tools button{min-height:40px!important;padding:8px 12px!important;font-size:13px!important;margin:4px}
+.neon-trivia #visual{margin:8px auto;min-height:0!important;font-size:65px}
+.neon-trivia #visual img{max-height:180px;max-width:100%;object-fit:contain}
+.neon-trivia #visual.zoomed img{max-height:65vh}
+.neon-trivia #preAidCard{background:linear-gradient(145deg,#1c1741,#0c1233);border:2px solid #b383ff;border-radius:23px;box-shadow:0 0 24px #984af84d;padding:25px}
+/* Feud: real two-team settings, survey answer display and presenter console. */
+.neon-feud #setup{max-width:950px;margin:30px auto!important;padding:26px!important;border-color:#bf8e63!important}
+.neon-feud .setup-team-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin:25px 0}
+.neon-feud .setup-team{display:flex;flex-direction:column;align-items:center;gap:12px;background:linear-gradient(145deg,#143c6e,#0b1834);border:2px solid #44c8ff;border-radius:22px;padding:24px 18px}
+.neon-feud .setup-team-1{background:linear-gradient(145deg,#501b47,#160f32);border-color:#ff5b97}
+.neon-feud .setup-team-badge{width:65px;height:65px;display:grid;place-items:center;border:1px solid currentColor;border-radius:19px;font-size:27px;color:#84dfff;background:#173660;box-shadow:0 0 25px #39b5ff33}
+.neon-feud .setup-team-1 .setup-team-badge{color:#ffa6c6;background:#4d1842;box-shadow:0 0 25px #ff398033}
+.neon-feud .setup-team strong{font-size:20px}
+.neon-feud .setup-team input{margin:0!important;text-align:center;font-size:20px}
+.neon-feud .rounds-field{display:block;max-width:380px;margin:0 auto 20px;text-align:center;line-height:2}
+.neon-feud #setup>button{display:block;min-width:50%;margin:auto;font-size:20px}
+.neon-feud #game .teams{gap:18px;grid-template-columns:repeat(2,minmax(0,1fr))}
+.neon-feud #game .team{position:relative;display:grid;grid-template-columns:1fr auto;align-items:center;padding:14px 20px;border-radius:19px;background:linear-gradient(130deg,#123867,#101331);border:2px solid #48bdff;box-shadow:inset 0 1px #ffffff3d,0 0 16px #249bff2b;text-align:right}
+.neon-feud #game .team:nth-child(2){background:linear-gradient(130deg,#4c1742,#17112d);border-color:#ff568c;box-shadow:inset 0 1px #ffffff3d,0 0 16px #ff367f2b}
+.neon-feud #game .team.active{outline:2px solid #ffe9af;outline-offset:3px}
+.neon-feud #game .team h2{font-size:clamp(16px,2vw,25px);margin:0;color:white}
+.neon-feud #game .team .score{font-size:40px;grid-column:2;grid-row:1/span 2;color:#ffdf7b}
+.neon-feud #game .team .muted{font-size:12px}
+.neon-feud #game>.card:not(.hostonly){border:2px solid #bd72f2!important;box-shadow:inset 0 0 0 4px #151238,0 0 20px #a64def33;padding:18px 24px}
+.neon-feud #roundlabel,.neon-feud #turnlabel{font-size:12px;color:#bcc9ee}
+.neon-feud #question{color:#fff;font-size:clamp(23px,3vw,37px);line-height:1.65;font-weight:850;margin:16px 0 22px;padding:12px 16px;border:1px solid #aa78ef;border-radius:17px;background:linear-gradient(160deg,#241648,#0b1031);box-shadow:inset 0 1px #e7beff55,0 0 15px #9b4fda22}
+.neon-feud #board{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;max-width:1120px;margin:auto}
+.neon-feud #board .answer{min-height:56px;padding:8px 12px;gap:12px;background:linear-gradient(180deg,#251648,#120d30 65%);border:1px solid #d385fb;border-radius:15px;font-size:clamp(16px,1.85vw,24px);box-shadow:inset 0 2px 5px #c983ff44,0 0 8px #a732c733,0 4px 8px #0006}
+.neon-feud #board .answer b{width:36px;height:36px;border-radius:12px;background:linear-gradient(180deg,#895c17,#422413);border:1px solid #ffd67f;color:#ffe9b6;font-size:22px;flex-shrink:0}
+.neon-feud #board .answer.open{background:linear-gradient(180deg,#123d69,#091d3d);border-color:#7ddcff;box-shadow:inset 0 2px 5px #6dc5ff55,0 0 12px #3b96ed33}
+.neon-feud #board .answer em{font-size:24px;min-width:30px;text-align:center;color:#ffda7e;font-weight:850}
+.neon-feud #pot,.neon-feud #strikes{font-size:30px;margin-inline:7px}
+.neon-feud #notice{font-size:14px;padding:10px;color:#ffe1a3}
+.neon-feud #hostcontrols{border:1px solid #b49157!important;background:#0c1230!important;box-shadow:none}
+.neon-feud #hostcontrols h3{font-size:19px;color:#ffe3a1;margin:0 0 8px}
+.neon-feud #hostcontrols>p{font-size:12px;margin:8px 0}
+.neon-feud #hostanswers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px 0}
+.neon-feud #hostanswers button{font-size:13px;min-width:0;min-height:44px;padding:9px}
+.neon-feud .controls button{min-width:0;min-height:44px;font-size:14px}
+/* Vault: keep three levels, four code digits and the real six aids. */
+.neon-vault #setup>h2,.neon-vault .section-title{color:#ffdf97;font-size:clamp(22px,2.4vw,30px)}
+.neon-vault #setup>#teamCount{max-width:340px}
+.neon-vault #teamFields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.neon-vault #cardFields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:18px 0}
+.neon-vault #cardFields .card-picker{margin:0!important;min-width:0;padding:16px;border:1px solid #9b7a4b;border-radius:20px;background:#17172e}
+.neon-vault #cardFields h3{font-size:18px;line-height:1.6;color:#ffe3a6;margin:0 0 12px}
+.neon-vault .card-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.neon-vault .power{min-height:120px!important;padding:12px 6px!important;border-radius:16px!important;border:1px solid #6879bb!important;gap:7px;background:linear-gradient(150deg,#202849,#111931)!important;box-shadow:inset 0 1px #c4c9f44f,0 5px 12px #0004}
+.neon-vault .power .symbol{font-size:30px!important;line-height:1.1}
+.neon-vault .power small{font-size:11px;line-height:1.6;color:#bbc8e4}
+.neon-vault .power.selected{border:2px solid #ffe299!important;background:linear-gradient(145deg,#5b402c,#201a34)!important;box-shadow:0 0 12px #ffaa3325,inset 0 1px #ffe2a955}
+.neon-vault .power.selected::after{content:"\2713";color:#ffe4a4;font-size:14px;line-height:1}
+.neon-vault .team-card{background:linear-gradient(145deg,color-mix(in srgb,var(--team,#2473be) 25%,#0b163a),#090f2c 70%);border:2px solid var(--team,#409cff);border-radius:22px;padding:16px;box-shadow:0 0 14px color-mix(in srgb,var(--team,#47bfff) 25%,transparent),inset 0 1px #ffffff3d}
+.neon-vault .team-card.active{outline:2px solid #ffe8a4;outline-offset:3px;box-shadow:0 0 20px #e1ab302d}
+.neon-vault .team-header{margin-bottom:10px;padding:8px 0 13px;display:grid;grid-template-columns:55px 1fr auto;align-items:center;column-gap:12px;text-align:right;border-bottom:1px solid #7789b355}
+.neon-vault .team-header .mascot{font-size:35px!important;display:flex!important;align-items:center;justify-content:center;width:55px;height:55px;grid-row:1/span 2;background:radial-gradient(ellipse,#354d72,#141734)!important;border:1px solid #8a9ad7;border-radius:14px;margin:0;filter:none}
+.neon-vault .team-header strong{font-size:22px;color:white}
+.neon-vault .team-header .score{grid-column:3;grid-row:1/span 2;color:#ffdb81;font-size:42px}
+.neon-vault .team-header small{font-size:11px;color:#bec8e5;grid-column:2}
+.neon-vault #teamFields .team-header{display:flex;justify-content:center;flex-direction:column;gap:7px}
+.neon-vault #teamFields .team-card input{font-size:20px;text-align:center}
+.neon-vault #play>.panel:first-child{padding:10px 16px!important;margin:4px 0 12px!important}
+.neon-vault #play>.panel:first-child .section-title{font-size:20px;margin:0}
+.neon-vault #roundInfo{margin:8px 0 0;font-size:12px}
+.neon-vault #selection{padding:18px!important}
+.neon-vault #selection>.section-title{text-align:center;margin:0 0 18px}
+.neon-vault #vaultGrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.neon-vault .vault-option{min-height:85px;display:flex;align-items:center;justify-content:flex-start;gap:18px;padding:9px 16px!important;background:linear-gradient(100deg,#14264d,#0c1535)!important;border:1px solid #9781b1!important;border-radius:16px!important;margin:10px 0;position:relative;overflow:hidden}
+.neon-vault .vault-option:not(:disabled){border-color:#f7c77c!important;box-shadow:inset 0 1px #ffe6b047,0 0 12px #ffb83f20}
+.neon-vault .vault-option .emoji{width:78px;height:66px;flex-shrink:0;font-size:0;background:url('neon-assets/vault.webp') center/contain no-repeat!important;filter:drop-shadow(0 4px 4px #0009) sepia(.22)}
+.neon-vault .vault-option:nth-of-type(2) .emoji{filter:grayscale(.55) brightness(1.2)}
+.neon-vault .vault-option:nth-of-type(3) .emoji{filter:sepia(.55) saturate(1.9)}
+.neon-vault .vault-option b{font-size:20px;color:#ffe3a1}
+.neon-vault .vault-option small{font-size:12px;color:#cbd3ef;line-height:1.7}
+.neon-vault .vault-option:disabled{opacity:.48}
+.neon-vault #challenge{max-width:1200px;padding:20px!important;margin:12px auto!important;position:relative;border:2px solid #c8a274!important;background:linear-gradient(145deg,#1a1738,#090f2b)!important;box-shadow:0 0 22px #d3a64d22}
+.neon-vault #challenge .challenge-header{border-bottom:1px solid #88745166;padding-bottom:10px;align-items:center}
+.neon-vault #challenge .section-title{font-size:23px;margin:0}
+.neon-vault #challenge #clock{font-size:44px!important;line-height:1.15!important;padding:12px 22px;border:2px solid #f5c56b;border-radius:18px;background:linear-gradient(160deg,#3e2e28,#0a1532);width:fit-content;margin:14px auto;color:#ffeab4;box-shadow:inset 0 1px #fff2bf4d,0 0 15px #f2b53726}
+.neon-vault #stage{font-size:13px;margin:9px}
+.neon-vault #found{margin:12px auto;gap:10px}
+.neon-vault .digit{width:59px;height:67px;border:1px solid #b4c4ec;border-radius:12px;background:linear-gradient(180deg,#233e62,#101b34 50%,#080d23 51%,#1c2442);font-size:34px;box-shadow:inset 0 1px #fff7,0 4px 10px #0006}
+.neon-vault #question{font-size:clamp(23px,2.8vw,37px);line-height:1.75;border:1px solid #9973d6;border-radius:18px;padding:22px 16px;margin:14px 0;background:linear-gradient(140deg,#231743,#0b1231);box-shadow:inset 0 1px #d1b1fb33}
+.neon-vault #helpCards button{font-size:13px;padding:8px 12px;min-height:40px}
+.neon-vault #cardMessage{font-size:13px;margin:8px}
+.neon-vault #answerArea{background:#0e393c;border:1px solid #3aa99f;margin:14px 0}
+.neon-vault #answerArea p{margin:6px}
+.neon-vault #finalArea{background:#0a1332;border:1px solid #9583d6;border-radius:20px;padding:20px}
+.neon-vault #orderPuzzle{font-size:21px;line-height:1.9;color:#eee7ff}
+.neon-vault #keypad{grid-template-columns:repeat(3,minmax(60px,90px));gap:9px}
+.neon-vault #keypad button{border-color:#aac0eb!important;border-radius:12px!important;background:linear-gradient(#29436e,#111d39)!important}
+.neon-vault #endPanel,.neon-vault #results{border:2px solid #ffda88!important;background:radial-gradient(ellipse at 50% 0,#67442166,transparent 70%),#10132c!important}
+/* Mystery: 6 boxes/team remains fixed; every unopened box has the same design. */
+.neon-mystery .setup-head{text-align:center;margin-bottom:22px}
+.neon-mystery .setup-head h2{font-size:clamp(26px,3vw,40px);margin:10px 0;color:#ffe4ac}
+.neon-mystery .setup-head p{font-size:15px;line-height:1.8;color:#c3c8e4}
+.neon-mystery .setup-layout{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(240px,1fr);gap:22px}
+.neon-mystery .setup-main,.neon-mystery .setup-side{border:1px solid #726cb1;border-radius:20px;background:linear-gradient(145deg,#171b43,#0c1233);padding:22px}
+.neon-mystery .setup-side{background:radial-gradient(ellipse at 50% 15%,#722e8b55,transparent 65%),#121333;text-align:center}
+.neon-mystery .setup-gift{width:155px;height:130px;font-size:0!important;background:url('neon-assets/mystery.webp') center/contain no-repeat;margin:0 auto 10px}
+.neon-mystery .setup-side>strong{font-size:24px;color:#ffe4aa}
+.neon-mystery .setup-side p{font-size:14px;color:#b9c4e2;line-height:1.9}
+.neon-mystery .setup-total{border:1px solid #6cbbed;border-radius:15px;background:#102348;padding:16px;display:flex;justify-content:space-between;align-items:center;margin:18px 0}
+.neon-mystery .setup-total b{font-size:34px;color:#8af0fa}
+.neon-mystery .setup-mini{font-size:13px;color:#bdc7e9;line-height:2}
+.neon-mystery .setup-step{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.neon-mystery .setup-step span{width:33px;height:33px;display:grid;place-items:center;border:1px solid #7b96db;border-radius:10px;background:#1d315d;font-size:12px;color:#b8e8ff}
+.neon-mystery .setup-step strong{font-size:22px}
+.neon-mystery .setup-step.second{margin-top:24px}
+.neon-mystery .team-choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.neon-mystery .team-choice{display:flex;flex-direction:column;align-items:center;gap:6px;min-height:86px!important;padding:12px!important;border:1px solid #8277c3!important;border-radius:16px!important;background:linear-gradient(145deg,#232054,#121737)!important;font-size:24px!important}
+.neon-mystery .team-choice strong{font-size:18px}
+.neon-mystery .team-choice.selected{border:2px solid #ffdc8a!important;background:linear-gradient(145deg,#514133,#1e1b3b)!important;box-shadow:0 0 12px #ebc04b2b,inset 0 1px #fff2b761}
+.neon-mystery .setup-names{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.neon-mystery .name-card{border-radius:15px;border:1px solid #697ec4;background:#171e46;padding:13px;min-width:0}
+.neon-mystery .name-card input{margin-top:8px}
+.neon-mystery .setup-actions{display:flex;justify-content:center;gap:12px;margin:24px 0 0}
+.neon-mystery .setup-actions button.gold{min-width:40%;font-size:19px}
+.neon-mystery #boardScreen{position:relative}
+.neon-mystery .end-game-toolbar{position:static!important;display:flex;justify-content:flex-end;margin:0 0 12px!important;padding:0!important}
+.neon-mystery .end-game-toolbar button{font-size:12px!important;min-height:34px!important;padding:7px 12px!important;margin:0!important}
+.neon-mystery #scoreboard{display:grid;grid-template-columns:repeat(var(--team-count,2),minmax(0,1fr))!important;gap:15px!important;max-width:none!important;margin:0!important;padding:0!important}
+.neon-mystery #scoreboard .scorebox{position:relative;display:grid;grid-template-columns:1fr auto;align-items:center;gap:5px 12px;padding:13px 19px!important;min-height:86px!important;border:2px solid var(--team-color,#42b9ff)!important;border-radius:18px!important;background:linear-gradient(140deg,color-mix(in srgb,var(--team-color,#42b9ff) 25%,#101432),#0b122c)!important;box-shadow:inset 0 1px #ffffff33,0 0 12px color-mix(in srgb,var(--team-color,#42b9ff) 25%,transparent)!important;text-align:right}
+.neon-mystery #scoreboard .scorebox:nth-child(2){--team-color:#e8499c}.neon-mystery #scoreboard .scorebox:nth-child(3){--team-color:#e3b34f}.neon-mystery #scoreboard .scorebox:nth-child(4){--team-color:#8c77ef}
+.neon-mystery #scoreboard .scorebox.active{outline:2px solid #fff0af;outline-offset:3px}
+.neon-mystery #scoreboard .scorebox strong{font-size:36px!important;line-height:1.1;color:#ffde88;grid-row:1/span 2;grid-column:2}
+.neon-mystery #scoreboard .scorebox span{font-size:20px!important}
+.neon-mystery #scoreboard .scorebox small{font-size:11px}
+.neon-mystery #boardScreen>.panel{padding:15px!important;border:1px solid #ae72df!important;background:linear-gradient(160deg,#19153ac9,#0c1230f2)!important;box-shadow:inset 0 1px #e1aaff33,0 0 20px #aa34dc1c}
+.neon-mystery .statusbar{margin:0 0 15px!important;gap:10px}
+.neon-mystery #turnInfo{font-size:22px!important;line-height:1.4!important;color:#ffe6a7}
+.neon-mystery #remainingInfo{font-size:12px;color:#c6cbea}
+.neon-mystery #boxGrid{grid-template-columns:repeat(6,minmax(0,1fr))!important;gap:13px!important}
+.neon-mystery .box-btn{min-height:140px!important;min-width:0;padding:10px 7px!important;gap:6px!important;border-radius:21px!important;border:1px solid #dd83ff!important;background:radial-gradient(ellipse at 50% 15%,#6c279966,transparent 80%),linear-gradient(180deg,#20123f,#0b1231)!important;box-shadow:inset 0 1px 3px #f1b6ff9c,inset 0 -5px 10px #332754,0 0 12px #c04bff2b,0 6px 8px #0006}
+.neon-mystery .box-btn::before{inset:5px;border-radius:16px;border:1px solid #e5b2ff33;pointer-events:none}
+.neon-mystery .box-btn:not(.opened) .box-icon{font-size:0!important;width:100%;height:100px!important;background:url('neon-assets/mystery.webp') center/contain no-repeat;filter:drop-shadow(0 5px 6px #0005);margin:0!important}
+.neon-mystery .box-number{font-size:13px!important;color:#ffe8b8}
+.neon-mystery .box-btn.opened{border-color:#525b7a!important;background:#11162c!important;opacity:.6;box-shadow:none;filter:saturate(.3)}
+.neon-mystery .box-btn.opened .box-icon{font-size:36px!important;height:80px!important;display:grid;place-items:center}
+.neon-mystery #challengeScreen{border:2px solid #b877f0!important;background:linear-gradient(150deg,#23163e,#0a1231 70%)!important;padding:20px!important;max-width:1320px;margin:12px auto!important}
+.neon-mystery #challengeScreen>.actionbar:first-child{margin:0 0 12px!important;justify-content:flex-end!important}
+.neon-mystery #challengeScreen>.actionbar:first-child button{font-size:12px;min-height:33px;padding:6px 10px}
+.neon-mystery .challenge-head{align-items:center;gap:15px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid #795aaf88}
+.neon-mystery #challengeType{font-size:14px!important;color:#91e6ff!important}
+.neon-mystery #challengeTitle{font-size:clamp(26px,3vw,40px)!important;line-height:1.4!important;margin:6px 0 0!important}
+.neon-mystery #clock{border:2px solid #71d5f1;border-radius:18px;padding:10px 16px;font-size:clamp(27px,3.4vw,43px)!important;line-height:1.2;box-shadow:0 0 0 3px #28325b,0 0 16px #42cced22;background:#0a1734;color:#d2f9ff;white-space:nowrap}
+.neon-mystery #clock.urgent{border-color:#ff598a;color:#ff8dab}
+.neon-mystery #challengeInfo{font-size:clamp(15px,1.75vw,21px)!important;line-height:1.8!important;padding:13px 17px!important;border:1px solid #7563a6!important;background:#141b3c!important;color:#eeeaff!important}
+.neon-mystery .play-area{min-height:200px;margin:16px 0}
+.neon-mystery .big-intro{background:radial-gradient(ellipse at 50% 0,#43306455,transparent 70%),#101633;border:1px solid #8d76bb;border-radius:22px;padding:22px 20px!important;max-width:900px;margin:auto;text-align:center}
+.neon-mystery .big-intro .intro-icon{font-size:76px!important;line-height:1.2;filter:drop-shadow(0 0 17px #9e4efb55)}
+.neon-mystery .big-intro .intro-kind{font-size:clamp(24px,3vw,37px)!important;color:#ffe4a4}
+.neon-mystery .big-intro .intro-desc{font-size:clamp(15px,1.8vw,22px)!important;line-height:1.75!important;margin:12px 0}
+.neon-mystery #challengeActions{margin-top:16px;gap:12px}
+.neon-mystery #challengeActions button{min-height:48px;font-size:16px;min-width:150px}
+.neon-mystery .memorytile{background:linear-gradient(145deg,#293274,#141d47);border:1px solid #a2c6ff;border-radius:18px;box-shadow:inset 0 1px #fff5,0 6px 12px #0005}
+.neon-mystery .sequence{background:#0b1332;border:1px solid #836cba;border-radius:15px}
+.neon-mystery .seqtag{border-color:#c2a3e6;background:#38224f}
+.neon-mystery .match-card{border:1px solid #a89aff!important;background:linear-gradient(145deg,#30235b,#11193b)!important;border-radius:15px!important;box-shadow:inset 0 2px 4px #ffffff44,0 4px 10px #0006}
+.neon-mystery .match-card.matched{border-color:#58dec2!important;background:#10473d!important}
+.neon-mystery #finish{border-color:#f0cf8f!important;background:radial-gradient(ellipse at 50% 0,#6f472e55,transparent 70%),#101631!important}
+/* Preserve target coordinates and true picture ratios in Hawk Eye. */
+.neon-mystery .hawk-pair img,.neon-mystery .hawk-image img{max-width:100%;height:auto}
+.neon-mystery .eye-image{border-color:#79cfff;box-shadow:0 0 12px #584df944}
+/* Touch / reduced motion / adaptive layouts. */
+@media (min-width:900px) and (max-height:760px){
+ .neon-hub main.hub-stage{grid-template-rows:minmax(95px,.28fr) minmax(270px,.72fr) 20px;gap:5px;padding-bottom:16px;min-height:470px}
+ .neon-hub .arcade-card{padding:12px 14px 16px;gap:6px;border-radius:29px}
+ .neon-hub .arcade-card h2{font-size:clamp(18px,2.1vw,27px)}
+ .neon-hub .arcade-card p{font-size:11px}
+ .neon-app section.neon-lobby{min-height:calc(100dvh - 85px);padding:22px 30px!important;gap:24px}
+ .neon-app .lobby-art{max-height:390px;width:100%;aspect-ratio:1.15}
+ .neon-app .lobby-actions>button{min-height:51px!important;font-size:15px}
+ .neon-app .lobby-subtitle{margin:12px 0 18px;font-size:15px}
+ .neon-app h1.lobby-title{font-size:35px!important;padding:10px 14px;margin-bottom:14px}
+ .neon-app .lobby-meta{margin-top:18px;font-size:11px}
+ .neon-trivia #board .cat-icon{height:68px;min-height:68px}
+ .neon-trivia #board .cat h3{min-height:27px!important;font-size:15px!important}
+ .neon-trivia #board .cat button{min-height:34px!important;font-size:23px!important;margin:2px 0!important}
+ .neon-trivia #scoreboard .score{min-height:73px!important;padding:8px 12px!important}
+ .neon-trivia #scoreboard .score strong{font-size:29px!important}
+ .neon-trivia #scoreboard .team-aids{margin-bottom:4px!important}
+ .neon-trivia #boardPanel{margin:8px 0!important;padding:9px!important}
+ .neon-trivia #boardPanel>.row{margin-bottom:8px!important}
+ .neon-trivia #turnInfo{font-size:16px!important;margin-bottom:6px!important}
+ .neon-mystery .box-btn{min-height:120px!important}
+ .neon-mystery .box-btn:not(.opened) .box-icon{height:84px!important}
+}
+@media (max-width:1100px){
+ .neon-trivia #categoryChoices{grid-template-columns:repeat(4,minmax(0,1fr))}
+ .neon-app main,.neon-app .wrap,.neon-app .shell{padding-inline:14px}
+ .neon-mystery .setup-layout{gap:15px;grid-template-columns:minmax(0,1.7fr) minmax(210px,1fr)}
+ .neon-hub .arcade-card{padding-inline:10px}
+ .neon-feud #hostanswers{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:899px){
+ .neon-hub main.hub-stage{padding-inline:22px}
+ .neon-hub .arcade-card{gap:6px;border-radius:25px}
+ .neon-hub .arcade-card h2{font-size:19px}
+ .neon-hub .arcade-card p{font-size:11px}
+ .neon-hub .arcade-deck{gap:13px}
+ .neon-hub .arcade-card button{font-size:15px}
+ .neon-app section.neon-lobby{grid-template-columns:1.2fr 1fr;gap:15px;padding:22px!important}
+ .neon-app h1.lobby-title{font-size:31px!important}
+ .neon-app .lobby-actions{gap:10px}
+ .neon-app .lobby-actions>button{font-size:14px;min-height:53px!important}
+ .neon-app .lobby-subtitle{font-size:14px;margin-bottom:18px}
+ .neon-app .lobby-meta{font-size:10px}
+ .neon-trivia #board{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+ .neon-vault #cardFields{grid-template-columns:1fr}
+ .neon-mystery #boxGrid{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+ .neon-mystery .setup-layout{grid-template-columns:1fr}
+ .neon-mystery .setup-side{display:grid;grid-template-columns:100px 1fr;column-gap:16px;align-items:center;padding:16px;text-align:right}
+ .neon-mystery .setup-gift{width:100px;height:90px;grid-row:1/span 3;margin:0}
+ .neon-mystery .setup-side>strong{font-size:20px}
+ .neon-mystery .setup-side>p{margin:0}
+ .neon-mystery .setup-total{grid-column:2;margin:8px 0;padding:9px}
+ .neon-mystery .setup-mini{display:none}
+}
+@media (max-width:700px){
+ .neon-hub .hub-toolbar{height:52px;padding:7px 12px}
+ .neon-hub .hub-version{font-size:9px;letter-spacing:.08em}
+ .neon-hub .hub-tools>button,.neon-hub #jarasAudioControls #jaOpen{font-size:11px;padding:7px 9px;min-height:36px}
+ .neon-hub main.hub-stage{height:auto;min-height:calc(100dvh - 52px);display:flex;flex-direction:column;gap:16px;padding:0 18px 40px}
+ .neon-hub .hub-marquee{height:145px;flex:none}
+ .neon-hub .brand-logo{height:125px;max-width:90vw}
+ .neon-hub .arcade-deck{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 17px;padding:0 0 20px}
+ .neon-hub .arcade-card{min-height:258px;grid-template-rows:120px auto auto auto;padding:10px 11px 16px;gap:6px}
+ .neon-hub .arcade-card h2{font-size:clamp(17px,3.6vw,24px);line-height:1.4}
+ .neon-hub .arcade-card p{font-size:10px;min-height:30px}
+ .neon-hub .arcade-card button{font-size:14px;min-height:40px;padding:7px}
+ .neon-hub .hub-floor{height:20%}
+ .neon-hub.playing #playerbar{min-height:51px;padding:7px 8px;gap:5px}
+ .neon-hub.playing #playerbar>button{font-size:11px;min-height:35px;padding:6px 8px}
+ .neon-hub.playing #playerbar #gameTitle{font-size:14px}
+ .neon-hub.playing #jarasAudioControls #jaOpen{font-size:0;min-width:34px;width:34px;padding:7px}
+ .neon-hub.playing #jarasAudioControls #jaOpen::before{content:"\266B";font-size:21px}
+ .neon-hub.playing #jarasAudioPanel{left:0;min-width:270px}
+ .neon-app main,.neon-app .wrap,.neon-app .shell{padding:8px 10px 24px}
+ .neon-app section.neon-lobby{display:flex;flex-direction:column;gap:22px;min-height:calc(100dvh - 85px);padding:22px 17px!important;border-radius:23px!important}
+ .neon-app .lobby-art{order:-1;width:min(240px,65vw);aspect-ratio:1.2;max-height:210px}
+ .neon-app .lobby-copy{width:100%}
+ .neon-app .lobby-kicker{display:none}
+ .neon-app h1.lobby-title{font-size:31px!important;padding:10px 12px;margin:0 auto 12px;max-width:500px}
+ .neon-app .lobby-subtitle{font-size:14px;margin:12px 0 18px}
+ .neon-app .lobby-meta{font-size:10px;margin-top:20px}
+ .neon-app .lobby-actions{max-width:500px;margin:auto}
+ .neon-app .lobby-actions>button{font-size:14px;min-height:51px!important}
+ .neon-app .panel,.neon-feud .card{padding:15px!important;border-radius:18px!important}
+ .neon-trivia #categoryChoices{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+ .neon-trivia .choice{flex-wrap:wrap;justify-content:center;text-align:center;font-size:11px;padding:9px 5px;min-height:91px;gap:5px}
+ .neon-trivia .choice input{width:18px;height:18px;min-height:18px}
+ .neon-trivia .choice .category-emoji{font-size:23px}
+ .neon-trivia #teamInputs,.neon-trivia #aidChoices{grid-template-columns:1fr;gap:12px}
+ .neon-trivia #scoreboard{gap:10px!important}
+ .neon-trivia #scoreboard .score{padding:10px!important;min-height:105px!important;display:flex;flex-direction:column;font-size:13px!important;text-align:center;gap:4px}
+ .neon-trivia #scoreboard .team-aids{justify-content:center;gap:3px;min-height:47px}
+ .neon-trivia #scoreboard .team-aid{font-size:8px!important;padding:2px 5px!important;min-height:19px}
+ .neon-trivia #scoreboard .score strong{font-size:27px!important}
+ .neon-trivia #board{gap:7px!important}
+ .neon-trivia #board .cat{padding:6px!important;border-radius:15px!important}
+ .neon-trivia #board .cat-icon{height:70px;min-height:70px;font-size:39px}
+ .neon-trivia #board .cat h3{font-size:12px!important;min-height:32px!important}
+ .neon-trivia #board .cat button{font-size:21px!important;min-height:38px!important;margin:3px 0!important}
+ .neon-trivia #questionPanel{padding:16px!important}
+ .neon-trivia #qtext{font-size:23px!important;line-height:1.75!important;padding:12px 0!important}
+ .neon-trivia #questionPanel #clock{font-size:28px!important;min-width:66px!important;min-height:60px!important}
+ .neon-trivia #revealBtn{font-size:18px!important}
+ .neon-trivia #awardButtons{flex-direction:column;align-items:stretch}
+ .neon-feud .setup-team-grid{gap:12px}
+ .neon-feud .setup-team{padding:16px 10px;border-radius:18px;gap:8px}
+ .neon-feud .setup-team strong,.neon-feud .setup-team input{font-size:15px}
+ .neon-feud .setup-team-badge{width:50px;height:50px;font-size:20px}
+ .neon-feud #game .team{display:block;padding:11px;text-align:center}
+ .neon-feud #game .team h2{font-size:16px}
+ .neon-feud #game .team .score{font-size:31px;margin:4px 0}
+ .neon-feud #game .team .muted{font-size:10px}
+ .neon-feud #game>.card:not(.hostonly){padding:14px!important}
+ .neon-feud #question{font-size:25px;padding:14px 9px;margin:13px 0}
+ .neon-feud #board{grid-template-columns:1fr;gap:9px}
+ .neon-feud #board .answer{min-height:49px;font-size:17px;padding:7px 10px}
+ .neon-feud #board .answer b{width:31px;height:31px;font-size:19px}
+ .neon-feud #board .answer em{font-size:20px}
+ .neon-feud #hostanswers{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .neon-vault #teamFields,.neon-vault #vaultGrid{grid-template-columns:1fr;gap:18px}
+ .neon-vault #cardFields{gap:14px}
+ .neon-vault #cardFields .card-picker{padding:12px}
+ .neon-vault .power{min-height:116px!important;font-size:12px!important}
+ .neon-vault .team-header strong{font-size:21px}
+ .neon-vault .team-header .score{font-size:36px}
+ .neon-vault #challenge{padding:16px!important}
+ .neon-vault #challenge .section-title{font-size:19px}
+ .neon-vault #challenge .challenge-header button{font-size:12px;padding:7px 10px;min-height:36px}
+ .neon-vault #question{font-size:23px;padding:17px 12px}
+ .neon-vault #qarea>.row{flex-direction:column;align-items:stretch}
+ .neon-vault #helpCards button{font-size:11px;padding:8px 9px}
+ .neon-mystery #scoreboard{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+ .neon-mystery #scoreboard .scorebox{padding:12px!important;min-height:78px!important}
+ .neon-mystery #scoreboard .scorebox span{font-size:16px!important}
+ .neon-mystery #scoreboard .scorebox strong{font-size:29px!important}
+ .neon-mystery #boxGrid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:10px!important}
+ .neon-mystery .box-btn{min-height:128px!important}
+ .neon-mystery .box-btn:not(.opened) .box-icon{height:87px!important}
+ .neon-mystery .box-number{font-size:11px!important}
+ .neon-mystery #turnInfo{font-size:21px!important}
+ .neon-mystery #challengeScreen{padding:16px!important}
+ .neon-mystery #clock{font-size:27px!important;padding:9px 11px}
+ .neon-mystery .challenge-head{flex-wrap:nowrap}
+ .neon-mystery #challengeTitle{font-size:25px!important}
+ .neon-mystery #challengeType{font-size:11px!important}
+ .neon-mystery #challengeInfo{font-size:15px!important;padding:12px!important}
+ .neon-mystery #challengeActions{gap:9px}
+ .neon-mystery #challengeActions button{min-width:0;flex:1 1 45%;font-size:14px;padding:10px}
+ .neon-mystery .setup-main,.neon-mystery .setup-side{padding:16px}
+ .neon-mystery .setup-step strong{font-size:19px}
+ .neon-mystery .team-choice strong{font-size:16px}
+ .neon-mystery .setup-names{grid-template-columns:1fr}
+ .neon-mystery .setup-actions button{font-size:14px!important;min-width:0!important}
+}
+@media (max-height:480px) and (min-width:701px){
+ .neon-hub .hub-toolbar{height:40px;padding-block:4px}
+ .neon-hub .hub-tools>button,.neon-hub #jarasAudioControls #jaOpen{min-height:30px;height:30px;font-size:10px;padding:4px 8px}
+ .neon-hub main.hub-stage{height:calc(100dvh - 40px);min-height:300px;grid-template-rows:70px minmax(205px,1fr) 9px;gap:3px;padding-inline:32px;padding-bottom:10px}
+ .neon-hub .brand-logo{height:70px;max-width:45vw}
+ .neon-hub .hub-marquee .intro{display:none}
+ .neon-hub .arcade-card{grid-template-rows:minmax(68px,1fr) auto auto;gap:4px;padding:8px 10px 12px;border-radius:23px}
+ .neon-hub .arcade-card p{display:none}
+ .neon-hub .arcade-card h2{font-size:16px}
+ .neon-hub .arcade-card button{min-height:33px;font-size:13px;padding:4px}
+ .neon-app section.neon-lobby{min-height:calc(100dvh - 70px);padding:14px 22px!important;gap:24px}
+ .neon-app .lobby-art{max-height:240px}
+ .neon-app h1.lobby-title{font-size:27px!important;padding:8px 13px;margin:0 0 10px}
+ .neon-app .lobby-kicker{display:none}
+ .neon-app .lobby-subtitle{font-size:12px;line-height:1.5;margin:8px 0 12px}
+ .neon-app .lobby-actions{gap:8px}
+ .neon-app .lobby-actions>button{min-height:39px!important;font-size:12px;padding:7px!important}
+ .neon-app .lobby-meta{font-size:9px;margin-top:12px}
+}
+@media(prefers-reduced-motion:reduce){.neon-app *,.neon-app *::before,.neon-app *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+.jaras-reduced-motion .neon-app *,.neon-app.neon-reduced-motion *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+/* Final specific rules replace, not accumulate, the retired iPad layout overrides. */
+body.neon-trivia #home.neon-lobby{background:radial-gradient(ellipse at 20% 40%,#104e5c66,transparent 56%),linear-gradient(145deg,#101336ed,#070b23f5)!important}
+body.neon-app #home.neon-lobby h1.lobby-title{color:#fff!important;font-size:clamp(31px,4.1vw,58px)!important}
+.neon-trivia #scoreboard .score{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:5px!important;min-height:80px!important;padding:10px 14px!important}
+.neon-trivia #scoreboard .neon-score-line{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:38px;text-align:right}
+.neon-trivia #scoreboard .neon-team-name{font-size:16px;font-weight:800;line-height:1.5}
+.neon-trivia #scoreboard .neon-score-total{display:flex;align-items:baseline;gap:7px;flex-shrink:0}
+.neon-trivia #scoreboard .neon-score-total small{font-size:11px;color:#bfcceb}
+.neon-trivia #scoreboard .team-aids{justify-content:flex-start!important;margin:0!important}
+.neon-trivia #endGameQuick{display:none!important}
+.neon-trivia #boardPanel>.row>button{border-radius:11px!important}
+@media(min-width:900px) and (max-height:760px){
+ body.neon-app #home.neon-lobby h1.lobby-title{font-size:35px!important}
+ .neon-trivia #game>.panel:first-child{padding:8px 12px!important}
+ .neon-trivia #turnInfo{font-size:16px!important;line-height:1.2!important;margin:0 0 6px!important}
+ .neon-trivia #scoreboard .score{min-height:70px!important;padding:7px 12px!important;gap:3px!important}
+ .neon-trivia #scoreboard .neon-score-line{min-height:30px}
+ .neon-trivia #scoreboard .team-aid{font-size:10px!important;min-height:21px!important;padding:2px 6px!important}
+ .neon-trivia #scoreboard .score strong{font-size:29px!important}
+ .neon-trivia #progress{font-size:11px!important;margin:7px 0 0!important}
+ .neon-trivia #board .cat-icon{height:64px;min-height:64px}
+ .neon-trivia #board .cat button{height:34px!important;min-height:34px!important;padding:3px 0!important;font-size:23px!important;margin:2px 0!important}
+ .neon-trivia #board .cat h3{min-height:26px!important;font-size:15px!important}
+ .neon-trivia #boardPanel>.row>button{min-height:29px!important;padding:4px 12px!important}
+}
+@media(max-width:700px){
+ body.neon-app #home.neon-lobby h1.lobby-title{font-size:29px!important}
+ .neon-trivia #scoreboard .score{padding:10px!important;min-height:110px!important}
+ .neon-trivia #scoreboard .team-aids{justify-content:center!important}
+ .neon-trivia #scoreboard .neon-score-line{flex-direction:column;gap:3px;text-align:center}
+ .neon-trivia #scoreboard .neon-team-name{font-size:14px}
+ .neon-trivia #scoreboard .neon-score-total{gap:5px}
+ .neon-trivia #scoreboard .score strong{font-size:27px!important}
+}
+@media(max-height:480px) and (min-width:701px){body.neon-app #home.neon-lobby h1.lobby-title{font-size:27px!important}}
+body.neon-app{isolation:isolate}
+body.neon-app:not(.neon-hub)::after{content:"";position:fixed;z-index:-1;left:0;right:0;bottom:0;height:21vh;background:url('neon-assets/floor.webp') center bottom/100% 100% no-repeat;opacity:.28;mask-image:linear-gradient(transparent,#000);-webkit-mask-image:linear-gradient(transparent,#000);pointer-events:none}
+/* Appearance settings still use the original variables and original handlers. */
+body.neon-trivia{background:radial-gradient(ellipse at 50% -12%,#3b176b99,transparent 52%),linear-gradient(150deg,var(--bg,#08152b),#100c2c)!important;font-family:inherit!important}
+.neon-trivia .panel:not(#home):not(#boardPanel):not(#questionPanel){background:linear-gradient(145deg,color-mix(in srgb,var(--panel,#142b4c) 50%,#12112c),#0c102c)!important}
+.neon-trivia button.secondary{background:linear-gradient(180deg,color-mix(in srgb,var(--btn,#2868cc) 70%,#1b214c),#111a3b)!important}
+/* Specific board rules replace older high-priority survey styling. */
+.neon-feud #game #board .answer{background:linear-gradient(125deg,#19154b,#170f36)!important;border:1.5px solid #ac66fc!important;box-shadow:inset 0 1px 2px #e8b6ff30,0 0 12px #9b3cff22!important;min-height:64px!important;border-radius:16px!important}
+.neon-feud #game #board .answer.open{background:linear-gradient(125deg,#084e69,#16294d)!important;border-color:#68edf2!important;box-shadow:inset 0 1px 3px #b8ffff60,0 0 15px #12e3ec30!important}
+.neon-feud #game #question{font-size:clamp(23px,3vw,37px)!important;color:#fff!important;line-height:1.6!important;text-shadow:0 0 16px #e181ff50!important;margin:10px 0 17px!important}
+.neon-feud #game #board .answer .pts{color:#ffe389!important}
+.neon-app .neon-local-tools{display:flex;justify-content:flex-start;align-items:center;gap:8px;margin:0 0 12px;min-height:38px}
+.neon-app .neon-local-tools #khaznaSoundBtn,.neon-app .top [data-jaras-mute]{position:static!important;inset:auto!important;z-index:auto!important;min-height:34px!important;padding:6px 11px!important;font-size:12px!important;box-shadow:inset 0 1px 2px #ffffff35,0 0 10px #5c6bdb25!important;border-radius:11px!important;background:linear-gradient(180deg,#253967,#101932)!important}
+.neon-app .top .row{flex-wrap:wrap!important}
+.neon-mystery .match-tile{background:radial-gradient(ellipse at 50% 0%,#61258790,transparent 75%),linear-gradient(145deg,#211240,#0d1642)!important;border:2px solid #cc6eff!important;border-radius:16px!important;color:#8ef3ff!important;box-shadow:inset 0 1px 5px #e5b2ff50,0 0 14px #a93bff25!important;text-shadow:0 0 12px #35d9ff!important;min-height:61px!important}
+.neon-mystery .match-tile.faceup{background:linear-gradient(145deg,#fff7d8,#bae8ff)!important;border-color:#ffe597!important;text-shadow:none!important;box-shadow:0 0 18px #ffcb5250!important;color:#101b38!important}
+.neon-mystery .match-tile.solved{background:linear-gradient(145deg,#0d7061,#132a4e)!important;border-color:#68ffca!important;text-shadow:none!important;opacity:1!important;box-shadow:0 0 15px #28e2a935!important}
+.neon-mystery .review-panel{background:radial-gradient(ellipse at 50% 0,#371855,transparent 70%),linear-gradient(145deg,#141433,#0a142a)!important;border-color:#77e1ff!important;box-shadow:0 0 24px #43c8f326!important}
+@media(max-width:700px){.neon-feud #game #question{font-size:23px!important}.neon-feud #game #board .answer{min-height:53px!important}.neon-app .top .row{gap:6px!important}.neon-app .top [data-jaras-mute]{font-size:10px!important;padding:5px 7px!important}.neon-mystery .match-tile{min-height:49px!important;font-size:29px!important;border-radius:11px!important}.neon-mystery .match-grid{gap:7px!important}}
+.neon-vault #finalArea{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:24px;align-items:center}
+.neon-vault #finalArea #orderPuzzle{font-size:18px;line-height:1.85;white-space:pre-line}
+.neon-vault #finalArea .neon-code-clues{padding:8px 13px;border-inline-end:1px solid #9276b044}
+.neon-vault #finalArea .neon-code-entry{min-width:0}
+.neon-vault #finalArea .neon-code-entry .row{flex-wrap:wrap}
+.neon-vault #finalArea #keypad{max-width:300px;gap:9px;margin:15px auto}
+.neon-vault #finalArea #entry{margin:10px auto}
+.neon-vault #finalArea #attemptMsg{font-size:13px;padding:9px;margin-bottom:0}
+.neon-vault #finalArea #keypad button{min-height:44px;font-size:19px}
+.neon-vault-code #challenge{display:grid;grid-template-columns:auto 1fr auto;gap:9px 18px;align-items:center}
+.neon-vault-code #challenge>.challenge-header{grid-column:1/-1;margin:0}
+.neon-vault-code #challenge>#clock{grid-column:1;grid-row:2/4;font-size:33px;margin:0}
+.neon-vault-code #challenge>#stage{grid-column:2;grid-row:2;margin:0}
+.neon-vault-code #challenge>#found{grid-column:2;grid-row:3;margin:0}
+.neon-vault-code #challenge>#helpCards{grid-column:3;grid-row:2/4;max-width:210px;justify-content:center}
+.neon-vault-code #challenge>#cardMessage{grid-column:1/-1;margin:0}
+.neon-vault-code #challenge>#finalArea{grid-column:1/-1;padding:12px!important}
+.neon-vault-code #challenge>#pausedMsg{grid-column:1/-1}
+@media(max-width:700px){.neon-vault #finalArea{grid-template-columns:1fr;gap:12px}.neon-vault #finalArea .neon-code-clues{border-inline-end:0;border-bottom:1px solid #9276b044;padding:5px}.neon-vault #finalArea #orderPuzzle{font-size:16px}.neon-vault-code #challenge{display:block}.neon-vault-code #challenge>#clock{margin:12px auto}.neon-vault-code #challenge>#helpCards{max-width:none;margin:10px 0}}
+html{background:#080c26;min-height:100%}
+body.neon-app:not(.neon-hub){min-height:100dvh;height:auto}
+.neon-vault #play .top #khaznaSoundBtn{position:static!important;inset:auto!important;font-size:11px!important;min-height:32px!important;padding:5px 9px!important;margin:0!important;box-shadow:none!important}
+.neon-vault #play .top{flex-wrap:wrap;gap:10px}
+@media(min-width:900px) and (max-height:850px){
+ .neon-vault #play>.panel:first-child{padding:8px 14px!important;margin-top:0!important}
+ .neon-vault #play>.panel:first-child .section-title{font-size:19px;margin:0!important}
+ .neon-vault #play>.panel:first-child button{min-height:32px;font-size:12px;padding:6px 10px}
+ .neon-vault #roundInfo{margin:4px 0!important;font-size:10px!important}
+ .neon-vault-code #challenge{padding:12px 16px!important;gap:6px 10px}
+ .neon-vault-code #challenge>.challenge-header{padding:0 0 8px!important;margin:0!important}
+ .neon-vault-code #challenge>.challenge-header h2{font-size:21px!important;margin:0!important}
+ .neon-vault-code #pauseBtn{min-height:32px;font-size:11px;padding:5px 9px}
+ .neon-vault-code #challenge>#helpCards{max-width:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+ .neon-vault-code #helpCards button{font-size:10px;min-height:34px;padding:5px 7px}
+ .neon-vault-code #challenge>#clock{font-size:29px;padding:6px 12px!important}
+ .neon-vault-code #found .digit{width:39px;height:41px;min-height:0;font-size:25px}
+ .neon-vault-code #stage{font-size:10px}
+ .neon-vault-code #finalArea #keypad{gap:6px;margin:9px auto}
+ .neon-vault-code #finalArea #keypad button{height:40px;min-height:40px;padding:6px;font-size:17px}
+ .neon-vault-code #finalArea #entry{margin:3px auto 8px}
+ .neon-vault-code #entry .digit{width:44px;height:46px;min-height:0;font-size:25px}
+ .neon-vault-code #finalArea .row button{font-size:12px;padding:6px 10px;min-height:34px}
+ .neon-vault-code #finalArea #orderPuzzle{font-size:16px;line-height:1.65}
+ .neon-vault-code #finalArea .small{font-size:10px!important}
+ .neon-vault-code #play>.panel.row:last-child{padding:10px!important}
+ .neon-vault-code #play>.panel.row:last-child button{font-size:12px;min-height:34px;padding:5px 10px}
+}
+/* A disabled memory tile may be previewing or solved, not unavailable content. */
+.neon-mystery .match-tile:disabled{opacity:1!important;filter:none!important;cursor:default}
+.neon-mystery .match-tile[data-face="true"]:not(.solved){background:linear-gradient(145deg,#fff4d5,#c6edff)!important;border-color:#ffe597!important;text-shadow:none!important;color:#102040!important;box-shadow:inset 0 2px 5px #fff9,0 0 16px #fbc55b30!important}

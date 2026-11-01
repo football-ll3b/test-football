@@ -1,0 +1,1039 @@
+{
+  "build": "NEON-STAGE-07",
+  "passed": 208,
+  "failed": 0,
+  "checks": [
+    {
+      "test": "hub 1180x720 no horizontal overflow",
+      "passed": true,
+      "detail": "1180 / 1180"
+    },
+    {
+      "test": "hub 1180 four cards in one row",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "hub 1180 all play buttons in viewport",
+      "passed": true,
+      "detail": "max=643"
+    },
+    {
+      "test": "hub 1024x600 no horizontal overflow",
+      "passed": true,
+      "detail": "1024 / 1024"
+    },
+    {
+      "test": "hub 1024 four cards in one row",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "hub 1024 all play buttons in viewport",
+      "passed": true,
+      "detail": "max=523"
+    },
+    {
+      "test": "hub 1366x900 no horizontal overflow",
+      "passed": true,
+      "detail": "1366 / 1366"
+    },
+    {
+      "test": "hub 1366 four cards in one row",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "hub 1366 all play buttons in viewport",
+      "passed": true,
+      "detail": "max=792"
+    },
+    {
+      "test": "hub 820x1030 no horizontal overflow",
+      "passed": true,
+      "detail": "820 / 820"
+    },
+    {
+      "test": "hub 390x740 no horizontal overflow",
+      "passed": true,
+      "detail": "390 / 390"
+    },
+    {
+      "test": "hub 844x390 no horizontal overflow",
+      "passed": true,
+      "detail": "844 / 844"
+    },
+    {
+      "test": "hub 844 all play buttons in viewport",
+      "passed": true,
+      "detail": "max=336"
+    },
+    {
+      "test": "trivia setup visible",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "trivia six categories selected",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "trivia board 36 buttons",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "trivia pre-aid dialog",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "trivia no multiple-choice quiz",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "trivia question timer exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "trivia correct answer awards 200",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "trivia one claimed question",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "trivia resume keeps score",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "trivia resume keeps used question",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "trivia two-column setting works",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "trivia three-column setting works",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "trivia runtime errors",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "test": "feud board visible",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "feud requested 5 rounds",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "feud wrong increments strike",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "feud undo restores strike",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "feud saved match resumes",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "feud runtime errors",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "test": "vault 3 safes per team",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "vault only current team enabled",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "vault first timer 3 minutes",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "vault answer reveal",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "vault digit earned",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "vault no partial points",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "vault runtime errors",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "test": "mystery 12 boxes for 2 teams",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "mystery challenge visible",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "mystery runtime errors",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "test": "vault fifth puzzle/keypad visible",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "vault four earned digits",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "vault success adds exactly 300",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "vault marks level complete",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "vault changes turn",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "vault resumed scores",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "vault selection phone width",
+      "passed": true,
+      "detail": "[390, 390]"
+    },
+    {
+      "test": "mystery acting live",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "acting points not added before confirmation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "acting confirmation awards correct points",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "acting exactly one box completed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "acting runtime errors",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "test": "mystery taboo live",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "taboo points not added before confirmation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "taboo confirmation awards correct points",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "taboo exactly one box completed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "taboo runtime errors",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "test": "mystery rapid live",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "rapid points not added before confirmation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "rapid confirmation awards correct points",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "rapid exactly one box completed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "rapid runtime errors",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "test": "mystery memory live",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "memory points not added before confirmation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "memory confirmation awards correct points",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "memory exactly one box completed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "memory runtime errors",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "test": "mystery order live",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "order points not added before confirmation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "order confirmation awards correct points",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "order exactly one box completed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "order runtime errors",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "test": "mystery match live",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "matching 16 tiles",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "matching 8 attempts",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "matching max 200",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "match points not added before confirmation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "match confirmation awards correct points",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "match exactly one box completed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "match runtime errors",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "test": "worker precaches entire package",
+      "passed": true
+    },
+    {
+      "test": "query version normalized",
+      "passed": true
+    },
+    {
+      "test": "offline HTML fallback",
+      "passed": true
+    },
+    {
+      "test": "offline artwork cached",
+      "passed": true
+    },
+    {
+      "test": "server failure keeps cached document",
+      "passed": true
+    },
+    {
+      "test": "external requests untouched",
+      "passed": true
+    },
+    {
+      "test": "other apps untouched",
+      "passed": true
+    },
+    {
+      "test": "unknown data endpoints untouched",
+      "passed": true
+    },
+    {
+      "test": "index scripts intact (documented Feud save fix only)",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "index no QA shim in release",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "index local resource jaras-audio.js",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "index local resource neon-stage.css",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "index local resource neon-view.js",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "index local resource neon-assets/logo.webp",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "index local resource neon-assets/trivia.webp",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "index local resource neon-assets/feud.webp",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "index local resource neon-assets/vault.webp",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "index local resource neon-assets/mystery.webp",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "index local resource jaras-v53.js",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "trivia scripts intact (documented Feud save fix only)",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "trivia no QA shim in release",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "trivia local resource ./manifest.webmanifest",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "trivia local resource ./icon-180.png",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "trivia local resource neon-stage.css",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "trivia local resource neon-view.js",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "trivia local resource neon-assets/trivia.webp",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "feud scripts intact (documented Feud save fix only)",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "feud no QA shim in release",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "feud local resource jaras-audio.js",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "feud local resource neon-stage.css",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "feud local resource neon-view.js",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "feud local resource neon-assets/feud.webp",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "feud local resource jaras-v53.js",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "vault scripts intact (documented Feud save fix only)",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "vault no QA shim in release",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "vault local resource jaras-audio.js",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "vault local resource neon-stage.css",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "vault local resource neon-view.js",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "vault local resource neon-assets/vault.webp",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "vault local resource jaras-v53.js",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "mystery scripts intact (documented Feud save fix only)",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "mystery no QA shim in release",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "mystery data bank identical",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "mystery data hawk-scene-data identical",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "mystery local resource neon-stage.css",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "mystery local resource neon-view.js",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "mystery local resource neon-assets/mystery.webp",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "mystery local resource ./jaras-audio.js",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "jaras-audio.js byte identical",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "jaras-v53.js byte identical",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "index final home no runtime errors",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "test": "index final home all images load",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "trivia final home no runtime errors",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "test": "trivia final home all images load",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "feud final home no runtime errors",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "test": "feud final home all images load",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "vault final home no runtime errors",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "test": "vault final home all images load",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "mystery final home no runtime errors",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "test": "mystery final home all images load",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "hub 1194x667 no overflow",
+      "passed": true,
+      "detail": "[1194, 1194]"
+    },
+    {
+      "test": "hub 1194x667 all four buttons in viewport",
+      "passed": true,
+      "detail": "[590, 590, 590, 590]"
+    },
+    {
+      "test": "hub 1024x564 no overflow",
+      "passed": true,
+      "detail": "[1024, 1024]"
+    },
+    {
+      "test": "hub 1024x564 all four buttons in viewport",
+      "passed": true,
+      "detail": "[487, 487, 487, 487]"
+    },
+    {
+      "test": "trivia mobile board no overflow",
+      "passed": true,
+      "detail": "[390, 390]"
+    },
+    {
+      "test": "trivia mobile question no overflow",
+      "passed": true,
+      "detail": "[390, 390]"
+    },
+    {
+      "test": "trivia mobile board runtime errors",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "test": "feud mobile board no overflow",
+      "passed": true,
+      "detail": "[390, 390]"
+    },
+    {
+      "test": "feud mobile board runtime errors",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "test": "mystery mobile board no overflow",
+      "passed": true,
+      "detail": "[390, 390]"
+    },
+    {
+      "test": "mystery mobile matching no overflow",
+      "passed": true,
+      "detail": "[390, 390]"
+    },
+    {
+      "test": "mystery mobile board runtime errors",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "test": "trivia home 390 width",
+      "passed": true,
+      "detail": "[390, 390]"
+    },
+    {
+      "test": "trivia setup 390 width",
+      "passed": true,
+      "detail": "[390, 390]"
+    },
+    {
+      "test": "trivia home/setup 390 runtime",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "test": "feud home 390 width",
+      "passed": true,
+      "detail": "[390, 390]"
+    },
+    {
+      "test": "feud setup 390 width",
+      "passed": true,
+      "detail": "[390, 390]"
+    },
+    {
+      "test": "feud home/setup 390 runtime",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "test": "vault home 390 width",
+      "passed": true,
+      "detail": "[390, 390]"
+    },
+    {
+      "test": "vault setup 390 width",
+      "passed": true,
+      "detail": "[390, 390]"
+    },
+    {
+      "test": "vault home/setup 390 runtime",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "test": "mystery home 390 width",
+      "passed": true,
+      "detail": "[390, 390]"
+    },
+    {
+      "test": "mystery setup 390 width",
+      "passed": true,
+      "detail": "[390, 390]"
+    },
+    {
+      "test": "mystery home/setup 390 runtime",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "test": "trivia home 844 width",
+      "passed": true,
+      "detail": "[844, 844]"
+    },
+    {
+      "test": "trivia home/setup 844 runtime",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "test": "feud home 844 width",
+      "passed": true,
+      "detail": "[844, 844]"
+    },
+    {
+      "test": "feud home/setup 844 runtime",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "test": "vault home 844 width",
+      "passed": true,
+      "detail": "[844, 844]"
+    },
+    {
+      "test": "vault home/setup 844 runtime",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "test": "mystery home 844 width",
+      "passed": true,
+      "detail": "[844, 844]"
+    },
+    {
+      "test": "mystery home/setup 844 runtime",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "test": "trivia home 1024 width",
+      "passed": true,
+      "detail": "[1024, 1024]"
+    },
+    {
+      "test": "trivia home/setup 1024 runtime",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "test": "feud home 1024 width",
+      "passed": true,
+      "detail": "[1024, 1024]"
+    },
+    {
+      "test": "feud home/setup 1024 runtime",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "test": "vault home 1024 width",
+      "passed": true,
+      "detail": "[1024, 1024]"
+    },
+    {
+      "test": "vault home/setup 1024 runtime",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "test": "mystery home 1024 width",
+      "passed": true,
+      "detail": "[1024, 1024]"
+    },
+    {
+      "test": "mystery home/setup 1024 runtime",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "test": "hub settings exposed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "hub original preferences saved",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "audio dropdown visible",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "audio volume preference",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "trivia launch handler target",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "trivia embedded game loaded",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "trivia iframe fits page",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "trivia back to hub",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "feud launch handler target",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "feud embedded game loaded",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "feud iframe fits page",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "feud back to hub",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "vault launch handler target",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "vault embedded game loaded",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "vault iframe fits page",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "vault back to hub",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "mystery launch handler target",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "mystery embedded game loaded",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "mystery iframe fits page",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "mystery back to hub",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "mystery eye live",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "hawk sixty seconds",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "eye points not added before confirmation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "eye confirmation awards correct points",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "eye exactly one box completed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "eye runtime errors",
+      "passed": true,
+      "detail": "[]"
+    }
+  ]
+}
